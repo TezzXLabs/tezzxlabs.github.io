@@ -3,498 +3,852 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tezz X Labs - Innovative Workshops & Training</title>
+    <title>Tezz X Labs - NEP-Ready Innovation Workshops</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
+        :root {
+            --bg: #0E0E16;
+            --surface: #151522;
+            --accent1: #5D5BF6;
+            --accent2: #B14FFF;
+            --text: #FAFAFA;
+            --muted: #9CA3AF;
+            --glow-primary: rgba(93, 91, 246, 0.4);
+            --glow-secondary: rgba(177, 79, 255, 0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #0F0F23;
-            --secondary: #1A1A2E;
-            --accent: #6C5CE7;
-            --text-primary: #FFFFFF;
-            --text-secondary: #A0A0A0;
-            --text-muted: #6B7280;
-            --surface: #16213E;
-            --surface-light: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--primary);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
-        }
-
-        /* Subtle Background Grid */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+            line-height: 1.6;
         }
 
         /* Navigation */
-        nav {
+        .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(15, 15, 35, 0.95);
+            z-index: 100;
+            padding: 1rem 2rem;
+            background: rgba(21, 21, 34, 0.1);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
 
+        .nav.scrolled {
+            background: rgba(21, 21, 34, 0.9);
+            backdrop-filter: blur(30px);
+        }
+
         .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .logo {
-            font-size: 24px;
             font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(108, 92, 231, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        .hero-title {
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 900;
-            letter-spacing: -2px;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #FFFFFF 0%, #A0A0A0 100%);
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero-subtitle {
-            font-size: 24px;
-            font-weight: 300;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
 
-        .hero-description {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 48px;
-            line-height: 1.7;
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent1);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--glow-primary) 0%, transparent 70%);
+            filter: blur(100px);
+            z-index: -1;
+            animation: pulse 4s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 30%;
+            right: 20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--glow-secondary) 0%, transparent 70%);
+            filter: blur(120px);
+            z-index: -1;
+            animation: pulse 3s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--accent1) 50%, var(--accent2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--muted);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
         }
 
         .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--accent);
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
             color: white;
-            padding: 16px 32px;
-            border-radius: 12px;
             text-decoration: none;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(108, 92, 231, 0.3);
-        }
-
-        /* Services Grid */
-        .services {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 48px;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 16px;  
-            letter-spacing: -1px;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--text-muted);
-            text-align: center;
-            margin-bottom: 64px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            margin-bottom: 80px;
-        }
-
-        .service-card {
-            background: var(--surface-light);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .service-card::before {
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(93, 91, 246, 0.3);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--text), var(--accent1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        /* Capabilities Grid */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .capability-card {
+            background: var(--surface);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .capability-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(108, 92, 231, 0.3);
+        .capability-card:hover::before {
+            transform: scaleX(1);
         }
 
-        .service-card:hover::before {
-            opacity: 1;
+        .capability-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(93, 91, 246, 0.3);
         }
 
-        .service-icon {
-            font-size: 32px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .service-title {
-            font-size: 20px;
+        .capability-card h3 {
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--text-primary);
+            margin-bottom: 1rem;
+            color: var(--text);
         }
 
-        .service-description {
-            color: var(--text-muted);
+        .capability-card p {
+            color: var(--muted);
             line-height: 1.6;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background: var(--secondary);
-            border-radius: 32px 32px 0 0;
-            margin-top: 80px;
-        }
-
-        .contact-grid {
+        /* Workshops Section */
+        .workshops-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .contact-info h3 {
-            font-size: 32px;
+        .workshop-card {
+            background: var(--surface);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workshop-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent2), var(--accent1));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .workshop-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .workshop-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 40px 80px rgba(177, 79, 255, 0.2);
+            border-color: rgba(177, 79, 255, 0.4);
+        }
+
+        .workshop-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .workshop-card h3 {
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 24px;
-            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+            color: var(--text);
         }
 
-        .contact-info p {
-            color: var(--text-muted);
-            margin-bottom: 48px;
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        .info-grid {
-            display: grid;
-            gap: 32px;
-        }
-
-        .info-item {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-        }
-
-        .info-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--surface-light);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .info-content h4 {
+        .workshop-card .hook {
+            color: var(--accent1);
             font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--text-primary);
+            margin-bottom: 0.5rem;
         }
 
-        .info-content p {
-            color: var(--text-muted);
-            margin: 0;
-            font-size: 14px;
+        .workshop-card p {
+            color: var(--muted);
+            line-height: 1.6;
         }
 
-        /* Form Styles */
-        .contact-form {
-            background: var(--surface-light);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 48px;
+        /* Metrics Bar */
+        .metrics {
+            background: linear-gradient(135deg, rgba(93, 91, 246, 0.1), rgba(177, 79, 255, 0.1));
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
         }
 
-        .form-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 32px;
+        .metrics-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
             text-align: center;
         }
 
-        .form-grid {
-            display: grid;
-            gap: 24px;
+        .metric {
+            padding: 1rem;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .metric-label {
+            color: var(--muted);
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--surface);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+            margin-bottom: 2rem;
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        label {
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
             font-weight: 500;
-            font-size: 14px;
-            color: var(--text-secondary);
         }
 
-        input, textarea, select {
-            background: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            color: var(--text-primary);
-            font-size: 16px;
-            transition: all 0.3s ease;
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text);
             font-family: inherit;
+            transition: all 0.3s ease;
         }
 
-        input:focus, textarea:focus, select:focus {
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
-        }
-
-        input::placeholder, textarea::placeholder {
-            color: var(--text-muted);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        select option {
-            background: var(--primary);
-            color: var(--text-primary);
+            border-color: var(--accent1);
+            box-shadow: 0 0 0 3px rgba(93, 91, 246, 0.1);
         }
 
         .submit-btn {
-            background: var(--accent);
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
             color: white;
             border: none;
-            border-radius: 12px;
-            padding: 16px 32px;
+            border-radius: 10px;
+            font-size: 1.1rem;
             font-weight: 600;
-            font-size: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 8px;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 15px 30px rgba(93, 91, 246, 0.3);
         }
 
-        .success-message {
-            display: none;
-            background: linear-gradient(135deg, #10B981, #059669);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 24px;
+        /* Footer */
+        .footer {
+            background: var(--surface);
+            padding: 3rem 2rem 2rem;
             text-align: center;
-            font-weight: 500;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
         }
 
         /* Animations */
-        .fade-in {
+        .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            animation: fadeInUp 0.8s ease forwards;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
         }
 
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .section {
+                padding: 4rem 1rem;
+            }
+            
+            .capabilities-grid,
+            .workshops-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Floating Animation Objects */
+        .floating-objects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-drone, .floating-rover {
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.4;
+            filter: drop-shadow(0 0 15px var(--glow-primary));
+            pointer-events: none;
+        }
+
+        .floating-drone {
+            animation: flyDrone 30s ease-in-out infinite;
+        }
+
+        .floating-rover {
+            animation: roverMove 35s ease-in-out infinite;
+        }
+
+        /* Drone flying in upper area */
+        @keyframes flyDrone {
+            0% {
+                transform: translateX(-150px) translateY(15vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.4;
+            }
+            25% {
+                transform: translateX(25vw) translateY(8vh) rotate(45deg) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateX(75vw) translateY(12vh) rotate(90deg) scale(0.9);
+                opacity: 0.5;
+            }
+            75% {
+                transform: translateX(90vw) translateY(5vh) rotate(135deg) scale(1.1);
+                opacity: 0.4;
+            }
+            95% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateX(110vw) translateY(18vh) rotate(180deg) scale(0.7);
+                opacity: 0;
+            }
+        }
+
+        /* Rover moving in lower area */
+        @keyframes roverMove {
+            0% {
+                transform: translateX(-120px) translateY(80vh) rotate(0deg) scale(0.9);
+                opacity: 0;
+            }
+            8% {
+                opacity: 0.5;
+            }
+            30% {
+                transform: translateX(30vw) translateY(75vh) rotate(10deg) scale(1);
+                opacity: 0.6;
+            }
+            60% {
+                transform: translateX(70vw) translateY(82vh) rotate(-5deg) scale(0.8);
+                opacity: 0.5;
+            }
+            90% {
+                transform: translateX(95vw) translateY(78vh) rotate(15deg) scale(1.2);
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateX(120vw) translateY(85vh) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+        }
+
+        /* Particle System */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0px);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) translateX(200px);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced Hero Effects */
+        .hero-floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.4;
+            animation: floatIcon 12s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 15%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(3) {
+            bottom: 25%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .floating-icon:nth-child(4) {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 6s;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translateY(-30px) rotate(180deg);
+                opacity: 0.6;
+            }
+        }
+
+        /* Workshop Card Enhanced Animations */
+        .workshop-card {
+            background: var(--surface);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .workshop-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(93, 91, 246, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .workshop-card:hover::after {
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+
+        /* Pulsing Background Elements */
+        .background-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--glow-primary), transparent);
+            top: 10%;
+            left: 80%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--glow-secondary), transparent);
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 7s;
+        }
+
+        .orb-3 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(93, 246, 181, 0.2), transparent);
+            top: 60%;
+            right: 15%;
+            animation-delay: 14s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px) scale(1);
+                opacity: 0.3;
+            }
+            33% {
+                transform: translateY(-100px) translateX(50px) scale(1.1);
+                opacity: 0.5;
+            }
+            66% {
+                transform: translateY(50px) translateX(-30px) scale(0.9);
+                opacity: 0.4;
+            }
+        }
+
+        /* Loading animation */
         @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 100px 0 60px;
-            }
-
-            .hero-title {
-                font-size: 48px;
-            }
-
-            .hero-subtitle {
-                font-size: 20px;
-            }
-
-            .section-title {
-                font-size: 32px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form {
-                padding: 32px 24px;
-            }
-        }
-
-        /* Micro-interactions */
-        .service-card, .info-item, .form-group {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .required {
-            color: #EF4444;
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
         }
     </style>
 </head>
 <body>
+    <!-- Floating Animation Objects -->
+    <div class="floating-objects">
+        <div class="floating-drone">🛸</div>
+        <div class="floating-rover">🔬</div>
+    </div>
+
+    <!-- Particle System -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Background Orbs -->
+    <div class="background-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
     <!-- Navigation -->
-    <nav>
+    <nav class="nav" id="navbar">
         <div class="nav-container">
             <div class="logo">TEZZ X LABS</div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#workshops">Workshops</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -502,185 +856,192 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h1 class="hero-title fade-in">Innovative Workshops</h1>
-            <p class="hero-subtitle fade-in stagger-1">Empowering Tomorrow's Innovators</p>
-            <p class="hero-description fade-in stagger-2">
-                We design and deliver cutting-edge workshops that transform ideas into reality. 
-                From technology and design to business strategy, our expert-led sessions 
-                equip you with the skills to thrive in the digital age.
-            </p>
-            <a href="#contact" class="cta-button fade-in stagger-3">
-                Start Your Journey
-                <span>→</span>
-            </a>
+        <div class="hero-floating-icons">
+            <div class="floating-icon">🔬</div>
+            <div class="floating-icon">⚙️</div>
+            <div class="floating-icon">🧪</div>
+            <div class="floating-icon">🔧</div>
+        </div>
+        <div class="hero-content reveal">
+            <h1>Innovation Workshops</h1>
+            <p>Empowering critical, creative thinkers in India's schools through hands-on STEM experiences</p>
+            <a href="#contact" class="cta-button">Book a Demo</a>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title fade-in">Workshop Categories</h2>
-            <p class="section-subtitle fade-in stagger-1">
-                Comprehensive training programs designed to accelerate your professional growth
-            </p>
-            
-            <div class="services-grid">
-                <div class="service-card fade-in stagger-1">
-                    <span class="service-icon">💻</span>
-                    <h3 class="service-title">Technology & Programming</h3>
-                    <p class="service-description">
-                        Master modern technologies including web development, AI/ML, 
-                        mobile applications, and emerging tech stacks through hands-on projects.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in stagger-2">
-                    <span class="service-icon">🎨</span>
-                    <h3 class="service-title">Design & Creativity</h3>
-                    <p class="service-description">
-                        Develop your creative vision with UI/UX design, graphic design, 
-                        prototyping, and design thinking methodologies.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in stagger-3">
-                    <span class="service-icon">📊</span>
-                    <h3 class="service-title">Business & Strategy</h3>
-                    <p class="service-description">
-                        Build business acumen through data analytics, digital marketing, 
-                        entrepreneurship, and strategic planning workshops.
-                    </p>
-                </div>
-                
-                <div class="service-card fade-in stagger-4">
-                    <span class="service-icon">🔬</span>
-                    <h3 class="service-title">Innovation Labs</h3>
-                    <p class="service-description">
-                        Experiment with cutting-edge technologies, research methodologies, 
-                        and prototype development in our state-of-the-art innovation labs.
-                    </p>
-                </div>
+    <!-- About Section -->
+    <section class="section reveal">
+        <h2 class="section-title">Transforming Education</h2>
+        <div class="about-content">
+            <p>We design innovative workshop experiences that seamlessly align with India's National Education Policy (NEP) 2020, serving students from classes 6-12 across ICSE and CBSE curricula. Our mission is to bridge the gap between theoretical knowledge and practical application, fostering the next generation of innovators and problem-solvers through experiential learning that sparks curiosity and builds confidence.</p>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section class="section reveal" id="services">
+        <h2 class="section-title">Our Capabilities</h2>
+        <div class="capabilities-grid">
+            <div class="capability-card reveal">
+                <h3>Curriculum Alignment</h3>
+                <p>Every workshop is meticulously designed to complement NEP 2020 guidelines while seamlessly integrating with existing ICSE and CBSE syllabi, ensuring educational continuity and enhanced learning outcomes.</p>
+            </div>
+            <div class="capability-card reveal">
+                <h3>Hands-on Kits & Facilitators</h3>
+                <p>Professional-grade learning kits paired with expert facilitators who bring real-world experience into the classroom, creating immersive learning environments that inspire and engage.</p>
+            </div>
+            <div class="capability-card reveal">
+                <h3>Outcome-based Reporting</h3>
+                <p>Comprehensive assessment frameworks that track student progress, skill development, and learning milestones, providing valuable insights to educators and parents.</p>
+            </div>
+            <div class="capability-card reveal">
+                <h3>Pan-India Delivery</h3>
+                <p>Scalable delivery model that reaches schools across urban and rural India, ensuring consistent quality and accessibility of innovative education experiences nationwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshops Section -->
+    <section class="section reveal" id="workshops">
+        <h2 class="section-title">Featured Workshops</h2>
+        <div class="workshops-grid">
+            <div class="workshop-card reveal">
+                <span class="workshop-icon">🚁</span>
+                <h3>Drone-Building Challenge</h3>
+                <div class="hook">Engineering takes flight</div>
+                <p>Students design, build, and program autonomous drones while learning aerodynamics, electronics, and coding. This workshop combines physics principles with hands-on engineering to create flying innovations.</p>
+            </div>
+            <div class="workshop-card reveal">
+                <span class="workshop-icon">🚀</span>
+                <h3>Mars-Rover Prototype</h3>
+                <div class="hook">Mission to the Red Planet</div>
+                <p>Teams engineer robotic rovers capable of navigating Martian terrain while collecting data. Students explore robotics, sensors, and space technology through this immersive planetary exploration experience.</p>
+            </div>
+            <div class="workshop-card reveal">
+                <span class="workshop-icon">🏠</span>
+                <h3>Tiny-House Sustainable Build</h3>
+                <div class="hook">Architecture meets sustainability</div>
+                <p>Design and construct eco-friendly miniature homes using renewable energy systems and sustainable materials. This workshop integrates architecture, environmental science, and green technology.</p>
+            </div>
+            <div class="workshop-card reveal">
+                <span class="workshop-icon">💧</span>
+                <h3>Water-Quality Lab</h3>
+                <div class="hook">Chemistry for clean water</div>
+                <p>Build water purification systems while testing contamination levels using advanced chemistry techniques. Students become environmental scientists tackling real-world water challenges.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section class="metrics reveal">
+        <div class="metrics-container">
+            <div class="metric">
+                <span class="metric-number">15</span>
+                <div class="metric-label">Partner Schools</div>
+            </div>
+            <div class="metric">
+                <span class="metric-number">9K</span>
+                <div class="metric-label">Learners Impacted</div>
+            </div>
+            <div class="metric">
+                <span class="metric-number">98%</span>
+                <div class="metric-label">Net Promoter Score</div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <h3>Let's Build Something Amazing Together</h3>
-                    <p>
-                        Ready to transform your skills and unlock new opportunities? 
-                        Get in touch with our team to discuss your learning goals and 
-                        find the perfect workshop for your journey.
-                    </p>
-                    
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-icon">📧</div>
-                            <div class="info-content">
-                                <h4>Email</h4>
-                                <p>hello@tezzxlabs.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-item">
-                            <div class="info-icon">📞</div>
-                            <div class="info-content">
-                                <h4>Phone</h4>
-                                <p>+91 98765 43210</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-item">
-                            <div class="info-icon">📍</div>
-                            <div class="info-content">
-                                <h4>Location</h4>
-                                <p>Innovation Hub, Koramangala<br>Bangalore, Karnataka 560034</p>
-                            </div>
-                        </div>
-                        
-                        <div class="info-item">
-                            <div class="info-icon">🕐</div>
-                            <div class="info-content">
-                                <h4>Workshop Hours</h4>
-                                <p>Monday - Saturday: 9:00 AM - 8:00 PM<br>Sunday: By appointment</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form fade-in stagger-2">
-                    <h3 class="form-title">Join Our Next Workshop</h3>
-                    
-                    <div class="success-message" id="successMessage">
-                        🎉 Thank you for your interest! We'll be in touch within 24 hours to discuss your workshop journey.
-                    </div>
-                    
-                    <form id="contactForm" class="form-grid">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name <span class="required">*</span></label>
-                                <input type="text" id="firstName" name="firstName" placeholder="John" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name <span class="required">*</span></label>
-                                <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
-                            </div>
-                            <div class="form-group">
-                                <label for="experience">Experience Level</label>
-                                <select id="experience" name="experience">
-                                    <option value="">Select level</option>
-                                    <option value="beginner">Beginner</option>
-                                    <option value="intermediate">Intermediate</option>
-                                    <option value="advanced">Advanced</option>
-                                    <option value="expert">Expert</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="workshop">Workshop Interest <span class="required">*</span></label>
-                            <select id="workshop" name="workshop" required>
-                                <option value="">Choose your focus area</option>
-                                <option value="web_development">Web Development</option>
-                                <option value="mobile_apps">Mobile App Development</option>
-                                <option value="ai_ml">AI & Machine Learning</option>
-                                <option value="ui_ux">UI/UX Design</option>
-                                <option value="data_science">Data Science</option>
-                                <option value="digital_marketing">Digital Marketing</option>
-                                <option value="blockchain">Blockchain</option>
-                                <option value="custom">Custom Workshop</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="goals">Your Learning Goals <span class="required">*</span></label>
-                            <textarea id="goals" name="goals" placeholder="Tell us about your objectives, current skill level, and what you hope to achieve through our workshops..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Inquiry</button>
-                    </form>
-                </div>
+    <section class="section reveal" id="contact">
+        <h2 class="section-title">Get Started Today</h2>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="school">School *</label>
+                <input type="text" id="school" name="school" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone (Optional)</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Tell us about your school's needs and interests..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="#" class="social-icon">📧</a>
+                <a href="#" class="social-icon">📱</a>
+                <a href="#" class="social-icon">🔗</a>
+                <a href="#" class="social-icon">📺</a>
+            </div>
+            <div class="copyright">© 2025 Tezz X Labs · Transforming Education Through Innovation</div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        Message sent successfully! We'll get back to you soon.
+    </div>
+
     <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all reveal elements
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show toast notification
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+            
+            // Reset form
+            e.target.reset();
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -695,70 +1056,61 @@
             });
         });
 
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Create particle system
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
             
-            const formData = new FormData(this);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                data[key] = value;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                // Random colors between accent1 and accent2
+                const hue = Math.random() * 60 + 240; // Blue to purple range
+                particle.style.background = `hsl(${hue}, 70%, 60%)`;
+                particle.style.boxShadow = `0 0 10px hsl(${hue}, 70%, 60%)`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Create multiple drones and rovers with better spacing
+        function createFloatingObjects() {
+            const container = document.querySelector('.floating-objects');
+            
+            // Create 2 drones with different flight paths (upper area)
+            for (let i = 0; i < 2; i++) {
+                const drone = document.createElement('div');
+                drone.className = 'floating-drone';
+                drone.innerHTML = '🛸'; // Using UFO emoji for better drone representation
+                drone.style.animationDelay = (i * 15) + 's';
+                drone.style.animationDuration = (30 + i * 5) + 's';
+                // Slightly different flight heights
+                drone.style.setProperty('--flight-offset', (i * 8) + 'vh');
+                container.appendChild(drone);
             }
             
-            // Show success message
-            const successMsg = document.getElementById('successMessage');
-            successMsg.style.display = 'block';
-            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Reset form
-            this.reset();
-            
-            console.log('Workshop inquiry submitted:', data);
-            
-            // Hide success message after 6 seconds
-            setTimeout(() => {
-                successMsg.style.display = 'none';
-            }, 6000);
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Navigation background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(15, 15, 35, 0.98)';
-            } else {
-                nav.style.background = 'rgba(15, 15, 35, 0.95)';
+            // Create 2 rovers with different paths (lower area)
+            for (let i = 0; i < 2; i++) {
+                const rover = document.createElement('div');
+                rover.className = 'floating-rover';
+                rover.innerHTML = '🔬'; // Using microscope for lab equipment feel
+                rover.style.animationDelay = (i * 18) + 's';
+                rover.style.animationDuration = (35 + i * 4) + 's';
+                // Different ground levels
+                rover.style.setProperty('--ground-offset', (i * 6) + 'vh');
+                container.appendChild(rover);
             }
-        });
+        }
 
-        // Enhanced form interactions
-        document.querySelectorAll('input, textarea, select').forEach(field => {
-            field.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'translateY(-2px)';
-            });
-            
-            field.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'translateY(0)';
-            });
+        // Initialize animations
+        window.addEventListener('load', () => {
+            document.querySelector('.hero-content').classList.add('fade-in-up');
+            createParticles();
+            createFloatingObjects();
         });
     </script>
 </body>
