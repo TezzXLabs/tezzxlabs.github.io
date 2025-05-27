@@ -3,109 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Your Business</title>
+    <title>Tezz X Labs - Innovative Workshops & Training</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+        :root {
+            --primary: #0F0F23;
+            --secondary: #1A1A2E;
+            --accent: #6C5CE7;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-muted: #6B7280;
+            --surface: #16213E;
+            --surface-light: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Background Grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 24px;
         }
 
-        header {
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
             text-align: center;
-            padding: 40px 0;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #A0A0A0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent);
             color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(108, 92, 231, 0.3);
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        /* Services Grid */
+        .services {
+            padding: 80px 0;
         }
 
-        .main-content {
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 16px;  
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 64px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(108, 92, 231, 0.3);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .service-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: var(--secondary);
+            border-radius: 32px 32px 0 0;
+            margin-top: 80px;
+        }
+
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
+            gap: 80px;
+            align-items: start;
         }
 
-        .info-section {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        .contact-info h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
         }
 
-        .contact-form {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            font-size: 18px;
+            line-height: 1.7;
         }
 
-        h2 {
-            color: #4a5568;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+        .info-grid {
+            display: grid;
+            gap: 32px;
         }
 
         .info-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f7fafc;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
         }
 
-        .info-item h3 {
-            color: #2d3748;
-            margin-bottom: 5px;
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .info-content h4 {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .info-content p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* Form Styles */
+        .contact-form {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px;
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 24px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
 
         label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #4a5568;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--text-secondary);
         }
 
         input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            color: var(--text-primary);
             font-size: 16px;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
 
         input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: var(--text-muted);
         }
 
         textarea {
@@ -113,220 +383,322 @@
             min-height: 120px;
         }
 
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
+        select option {
+            background: var(--primary);
+            color: var(--text-primary);
         }
 
-        .btn:hover {
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 32px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 12px 40px rgba(108, 92, 231, 0.3);
         }
 
         .success-message {
             display: none;
-            background: #48bb78;
+            background: linear-gradient(135deg, #10B981, #059669);
             color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .business-hours {
-            background: #e6fffa;
             padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 500;
         }
 
-        .hours-list {
-            list-style: none;
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 0.8s ease forwards;
         }
 
-        .hours-list li {
-            padding: 5px 0;
-            border-bottom: 1px solid #bee3f8;
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .hours-list li:last-child {
-            border-bottom: none;
-        }
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .main-content {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .hero-subtitle {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .services-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 24px;
             }
 
-            h1 {
-                font-size: 2rem;
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
             }
 
-            .info-section, .contact-form {
-                padding: 20px;
+            .form-row {
+                grid-template-columns: 1fr;
             }
+
+            .contact-form {
+                padding: 32px 24px;
+            }
+        }
+
+        /* Micro-interactions */
+        .service-card, .info-item, .form-group {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .required {
-            color: #e53e3e;
-        }
-
-        .floating-elements {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .floating-circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-circle:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .floating-circle:nth-child(2) {
-            width: 120px;
-            height: 120px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 2s;
-        }
-
-        .floating-circle:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            color: #EF4444;
         }
     </style>
 </head>
 <body>
-    <div class="floating-elements">
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-        <div class="floating-circle"></div>
-    </div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">TEZZ X LABS</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="container">
-        <header>
-            <h1>Get In Touch</h1>
-            <p class="subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-        </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title fade-in">Innovative Workshops</h1>
+            <p class="hero-subtitle fade-in stagger-1">Empowering Tomorrow's Innovators</p>
+            <p class="hero-description fade-in stagger-2">
+                We design and deliver cutting-edge workshops that transform ideas into reality. 
+                From technology and design to business strategy, our expert-led sessions 
+                equip you with the skills to thrive in the digital age.
+            </p>
+            <a href="#contact" class="cta-button fade-in stagger-3">
+                Start Your Journey
+                <span>→</span>
+            </a>
+        </div>
+    </section>
 
-        <div class="main-content">
-            <div class="info-section">
-                <h2>Contact Information</h2>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Workshop Categories</h2>
+            <p class="section-subtitle fade-in stagger-1">
+                Comprehensive training programs designed to accelerate your professional growth
+            </p>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in stagger-1">
+                    <span class="service-icon">💻</span>
+                    <h3 class="service-title">Technology & Programming</h3>
+                    <p class="service-description">
+                        Master modern technologies including web development, AI/ML, 
+                        mobile applications, and emerging tech stacks through hands-on projects.
+                    </p>
+                </div>
                 
-                <div class="info-item">
-                    <h3>📧 Email</h3>
-                    <p>info@yourbusiness.com</p>
+                <div class="service-card fade-in stagger-2">
+                    <span class="service-icon">🎨</span>
+                    <h3 class="service-title">Design & Creativity</h3>
+                    <p class="service-description">
+                        Develop your creative vision with UI/UX design, graphic design, 
+                        prototyping, and design thinking methodologies.
+                    </p>
                 </div>
-
-                <div class="info-item">
-                    <h3>📞 Phone</h3>
-                    <p>+1 (555) 123-4567</p>
-                </div>
-
-                <div class="info-item">
-                    <h3>📍 Address</h3>
-                    <p>123 Business Street<br>
-                    Suite 100<br>
-                    Your City, State 12345</p>
-                </div>
-
-                <div class="business-hours">
-                    <h3>🕐 Business Hours</h3>
-                    <ul class="hours-list">
-                        <li><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</li>
-                        <li><strong>Saturday:</strong> 10:00 AM - 4:00 PM</li>
-                        <li><strong>Sunday:</strong> Closed</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="contact-form">
-                <h2>Send Us a Message</h2>
                 
-                <div class="success-message" id="successMessage">
-                    Thank you for your message! We'll get back to you within 24 hours.
+                <div class="service-card fade-in stagger-3">
+                    <span class="service-icon">📊</span>
+                    <h3 class="service-title">Business & Strategy</h3>
+                    <p class="service-description">
+                        Build business acumen through data analytics, digital marketing, 
+                        entrepreneurship, and strategic planning workshops.
+                    </p>
                 </div>
-
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Full Name <span class="required">*</span></label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="company">Company/Organization</label>
-                        <input type="text" id="company" name="company">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject <span class="required">*</span></label>
-                        <select id="subject" name="subject" required>
-                            <option value="">Please select a subject</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="support">Customer Support</option>
-                            <option value="sales">Sales Question</option>
-                            <option value="partnership">Partnership Opportunity</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message <span class="required">*</span></label>
-                        <textarea id="message" name="message" placeholder="Please tell us how we can help you..." required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+                
+                <div class="service-card fade-in stagger-4">
+                    <span class="service-icon">🔬</span>
+                    <h3 class="service-title">Innovation Labs</h3>
+                    <p class="service-description">
+                        Experiment with cutting-edge technologies, research methodologies, 
+                        and prototype development in our state-of-the-art innovation labs.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3>Let's Build Something Amazing Together</h3>
+                    <p>
+                        Ready to transform your skills and unlock new opportunities? 
+                        Get in touch with our team to discuss your learning goals and 
+                        find the perfect workshop for your journey.
+                    </p>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-icon">📧</div>
+                            <div class="info-content">
+                                <h4>Email</h4>
+                                <p>hello@tezzxlabs.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">📞</div>
+                            <div class="info-content">
+                                <h4>Phone</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">📍</div>
+                            <div class="info-content">
+                                <h4>Location</h4>
+                                <p>Innovation Hub, Koramangala<br>Bangalore, Karnataka 560034</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">🕐</div>
+                            <div class="info-content">
+                                <h4>Workshop Hours</h4>
+                                <p>Monday - Saturday: 9:00 AM - 8:00 PM<br>Sunday: By appointment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in stagger-2">
+                    <h3 class="form-title">Join Our Next Workshop</h3>
+                    
+                    <div class="success-message" id="successMessage">
+                        🎉 Thank you for your interest! We'll be in touch within 24 hours to discuss your workshop journey.
+                    </div>
+                    
+                    <form id="contactForm" class="form-grid">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
+                            </div>
+                            <div class="form-group">
+                                <label for="experience">Experience Level</label>
+                                <select id="experience" name="experience">
+                                    <option value="">Select level</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                    <option value="expert">Expert</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="workshop">Workshop Interest <span class="required">*</span></label>
+                            <select id="workshop" name="workshop" required>
+                                <option value="">Choose your focus area</option>
+                                <option value="web_development">Web Development</option>
+                                <option value="mobile_apps">Mobile App Development</option>
+                                <option value="ai_ml">AI & Machine Learning</option>
+                                <option value="ui_ux">UI/UX Design</option>
+                                <option value="data_science">Data Science</option>
+                                <option value="digital_marketing">Digital Marketing</option>
+                                <option value="blockchain">Blockchain</option>
+                                <option value="custom">Custom Workshop</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="goals">Your Learning Goals <span class="required">*</span></label>
+                            <textarea id="goals" name="goals" placeholder="Tell us about your objectives, current skill level, and what you hope to achieve through our workshops..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
             const formData = new FormData(this);
             const data = {};
             for (let [key, value] of formData.entries()) {
@@ -334,35 +706,58 @@
             }
             
             // Show success message
-            document.getElementById('successMessage').style.display = 'block';
+            const successMsg = document.getElementById('successMessage');
+            successMsg.style.display = 'block';
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
             
             // Reset form
             this.reset();
             
-            // Scroll to success message
-            document.getElementById('successMessage').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'center'
-            });
+            console.log('Workshop inquiry submitted:', data);
             
-            // Log the data (in a real application, you'd send this to your server)
-            console.log('Form submitted with data:', data);
-            
-            // Hide success message after 5 seconds
-            setTimeout(function() {
-                document.getElementById('successMessage').style.display = 'none';
-            }, 5000);
+            // Hide success message after 6 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 6000);
         });
 
-        // Add some interactive effects
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(15, 15, 35, 0.98)';
+            } else {
+                nav.style.background = 'rgba(15, 15, 35, 0.95)';
+            }
+        });
+
+        // Enhanced form interactions
         document.querySelectorAll('input, textarea, select').forEach(field => {
             field.addEventListener('focus', function() {
-                this.parentElement.style.transform = 'scale(1.02)';
-                this.parentElement.style.transition = 'transform 0.2s ease';
+                this.parentElement.style.transform = 'translateY(-2px)';
             });
             
             field.addEventListener('blur', function() {
-                this.parentElement.style.transform = 'scale(1)';
+                this.parentElement.style.transform = 'translateY(0)';
             });
         });
     </script>
