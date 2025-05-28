@@ -1,20 +1,30 @@
-<!DOCTYPE html>
+        .workshop-card,
+        .feature-card {
+            transition: all 0.3s ease;
+            will-change: transform;
+        }<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tezz X Labs - NEP-Ready Innovation Workshops</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0E0E16;
-            --surface: #151522;
+            --bg: #0A0A0F;
+            --surface: #14141F;
+            --surface-light: #1A1A28;
             --accent1: #5D5BF6;
             --accent2: #B14FFF;
-            --text: #FAFAFA;
-            --muted: #9CA3AF;
-            --glow-primary: rgba(93, 91, 246, 0.4);
-            --glow-secondary: rgba(177, 79, 255, 0.3);
+            --accent3: #00D4FF;
+            --accent4: #FF6B6B;
+            --text: #FFFFFF;
+            --text-muted: #A0A0B8;
+            --glow-primary: rgba(93, 91, 246, 0.5);
+            --glow-secondary: rgba(177, 79, 255, 0.4);
+            --gradient-1: linear-gradient(135deg, #5D5BF6 0%, #B14FFF 100%);
+            --gradient-2: linear-gradient(135deg, #00D4FF 0%, #5D5BF6 100%);
+            --gradient-3: linear-gradient(135deg, #FF6B6B 0%, #B14FFF 100%);
         }
 
         * {
@@ -24,11 +34,16 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
             overflow-x: hidden;
             line-height: 1.6;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Navigation */
@@ -37,16 +52,16 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
+            z-index: 1000;
             padding: 1rem 2rem;
-            background: rgba(21, 21, 34, 0.1);
+            background: rgba(10, 10, 15, 0.8);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
 
         .nav.scrolled {
-            background: rgba(21, 21, 34, 0.9);
+            background: rgba(20, 20, 31, 0.95);
             backdrop-filter: blur(30px);
         }
 
@@ -59,18 +74,26 @@
         }
 
         .logo {
-            font-weight: 800;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -81,10 +104,6 @@
             position: relative;
         }
 
-        .nav-links a:hover {
-            color: var(--accent1);
-        }
-
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -92,12 +111,33 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            background: var(--gradient-1);
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient-1);
+            color: white !important;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(93, 91, 246, 0.4);
+        }
+
+        .nav-cta::after {
+            display: none !important;
         }
 
         /* Hero Section */
@@ -106,99 +146,170 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        /* Video Background */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--glow-primary) 0%, transparent 70%);
-            filter: blur(100px);
-            z-index: -1;
-            animation: pulse 4s ease-in-out infinite alternate;
+            object-fit: cover;
         }
 
-        .hero::after {
-            content: '';
+        .video-overlay {
             position: absolute;
-            top: 30%;
-            right: 20%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 15, 0.7);
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.4) 0%, rgba(10, 10, 15, 0.8) 100%);
+        }
+
+        /* Animated Background Grid */
+        .hero-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: 
+                linear-gradient(rgba(93, 91, 246, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(93, 91, 246, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-move 10s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float-orb 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, var(--glow-secondary) 0%, transparent 70%);
-            filter: blur(120px);
-            z-index: -1;
-            animation: pulse 3s ease-in-out infinite alternate-reverse;
+            background: var(--glow-primary);
+            top: -20%;
+            left: -10%;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--glow-secondary);
+            bottom: -20%;
+            right: -10%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
         .hero-content {
             max-width: 900px;
+            text-align: center;
+            z-index: 10;
             padding: 0 2rem;
-            z-index: 1;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--text) 0%, var(--accent1) 50%, var(--accent2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.1;
+            animation: glow-text 3s ease-in-out infinite;
+        }
+
+        @keyframes glow-text {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-            color: var(--muted);
+            font-size: 1.4rem;
+            color: var(--text-muted);
             margin-bottom: 2.5rem;
-            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-button {
-            display: inline-block;
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
             padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
-            color: white;
-            text-decoration: none;
             border-radius: 50px;
+            text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             position: relative;
             overflow: hidden;
         }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 5px 20px rgba(93, 91, 246, 0.3);
         }
 
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(93, 91, 246, 0.3);
+            box-shadow: 0 10px 30px rgba(93, 91, 246, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--accent1);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent1);
+            box-shadow: 0 10px 30px rgba(93, 91, 246, 0.5);
         }
 
         /* Section Styling */
@@ -206,82 +317,32 @@
             padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
             text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, var(--text), var(--accent1));
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        /* About Section */
-        .about-content {
+        .section-subtitle {
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            color: var(--muted);
-            line-height: 1.8;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Capabilities Grid */
-        .capabilities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .capability-card {
-            background: var(--surface);
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .capability-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .capability-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .capability-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-            border-color: rgba(93, 91, 246, 0.3);
-        }
-
-        .capability-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-
-        .capability-card p {
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        /* Workshops Section */
+        /* Workshop Cards */
         .workshops-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -291,12 +352,13 @@
 
         .workshop-card {
             background: var(--surface);
-            padding: 2.5rem 2rem;
+            padding: 2.5rem;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .workshop-card::before {
@@ -306,9 +368,10 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent2), var(--accent1));
+            background: var(--gradient-2);
             transform: scaleX(0);
             transition: transform 0.4s ease;
+            transform-origin: left;
         }
 
         .workshop-card:hover::before {
@@ -316,91 +379,189 @@
         }
 
         .workshop-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 40px 80px rgba(177, 79, 255, 0.2);
-            border-color: rgba(177, 79, 255, 0.4);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent1);
         }
 
         .workshop-icon {
             font-size: 3rem;
+            color: var(--accent1);
             margin-bottom: 1.5rem;
             display: block;
         }
 
         .workshop-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: var(--text);
         }
 
-        .workshop-card .hook {
+        .workshop-tag {
+            display: inline-block;
+            background: rgba(93, 91, 246, 0.2);
             color: var(--accent1);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--accent1);
         }
 
         .workshop-card p {
-            color: var(--muted);
-            line-height: 1.6;
+            color: var(--text-muted);
+            line-height: 1.7;
         }
 
-        /* Metrics Bar */
-        .metrics {
-            background: linear-gradient(135deg, rgba(93, 91, 246, 0.1), rgba(177, 79, 255, 0.1));
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            margin: 4rem 0;
+        /* Stats Section */
+        .stats-section {
+            background: var(--gradient-1);
+            padding: 4rem 2rem;
+            border-radius: 30px;
+            margin: 4rem auto;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .metrics-container {
-            max-width: 1000px;
-            margin: 0 auto;
+        .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             text-align: center;
         }
 
-        .metric {
+        .stat-item {
+            color: white;
             padding: 1rem;
         }
 
-        .metric-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
             display: block;
         }
 
-        .metric-label {
-            color: var(--muted);
-            font-weight: 500;
+        .stat-label {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent2);
+            box-shadow: 0 15px 30px rgba(177, 79, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent2);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Testimonial Section */
+        .testimonials {
+            background: var(--surface);
+            padding: 5rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+            border-radius: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--surface-light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 700px;
+            margin: 2rem auto;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--accent1);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin: 2rem 0;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-role {
+            color: var(--accent1);
+            font-size: 0.95rem;
             margin-top: 0.5rem;
         }
 
         /* Contact Form */
+        .contact-section {
+            padding: 5rem 2rem;
+        }
+
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
             background: var(--surface);
             padding: 3rem;
-            border-radius: 20px;
+            border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--text);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .form-group input,
@@ -420,24 +581,29 @@
             outline: none;
             border-color: var(--accent1);
             box-shadow: 0 0 0 3px rgba(93, 91, 246, 0.1);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .submit-btn {
             width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            padding: 1.2rem;
+            background: var(--gradient-1);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(93, 91, 246, 0.3);
+            box-shadow: 0 10px 30px rgba(93, 91, 246, 0.4);
         }
 
         /* Footer */
@@ -453,14 +619,14 @@
             margin: 0 auto;
         }
 
-        .social-icons {
+        .social-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
-        .social-icon {
+        .social-link {
             width: 50px;
             height: 50px;
             background: rgba(255, 255, 255, 0.1);
@@ -468,20 +634,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--muted);
+            color: var(--text-muted);
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 1.3rem;
         }
 
-        .social-icon:hover {
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+        .social-link:hover {
+            background: var(--gradient-1);
             color: white;
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            color: var(--muted);
-            font-size: 0.9rem;
+            transform: translateY(-5px);
         }
 
         /* Toast Notification */
@@ -489,357 +651,121 @@
             position: fixed;
             top: 100px;
             right: 2rem;
-            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            background: var(--gradient-1);
             color: white;
             padding: 1rem 2rem;
             border-radius: 10px;
             transform: translateX(400px);
             transition: all 0.3s ease;
-            z-index: 1000;
+            z-index: 2000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            pointer-events: none;
         }
 
         .toast.show {
             transform: translateX(0);
+            opacity: 1;
+            pointer-events: all;
         }
 
-        /* Animations */
+        /* Scroll Animations - Optimized */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(30px);
             transition: all 0.6s ease;
+            will-change: transform, opacity;
         }
 
-        .reveal.revealed {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Mobile Responsive */
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
-            }
-            
-            .section {
-                padding: 4rem 1rem;
-            }
-            
-            .capabilities-grid,
-            .workshops-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .metrics-container {
-                grid-template-columns: 1fr;
                 gap: 1rem;
+                font-size: 0.9rem;
             }
-            
+
+            .nav-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .workshops-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .contact-form {
-                padding: 2rem 1.5rem;
+                padding: 2rem;
             }
         }
 
-        /* Floating Animation Objects */
-        .floating-objects {
+        /* Loading Animation */
+        .loader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
+            background: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
         }
 
-        .floating-drone, .floating-rover {
-            position: absolute;
-            font-size: 2.5rem;
-            opacity: 0.4;
-            filter: drop-shadow(0 0 15px var(--glow-primary));
-            pointer-events: none;
-        }
-
-        .floating-drone {
-            animation: flyDrone 30s ease-in-out infinite;
-        }
-
-        .floating-rover {
-            animation: roverMove 35s ease-in-out infinite;
-        }
-
-        /* Drone flying in upper area */
-        @keyframes flyDrone {
-            0% {
-                transform: translateX(-150px) translateY(15vh) rotate(0deg) scale(0.8);
-                opacity: 0;
-            }
-            5% {
-                opacity: 0.4;
-            }
-            25% {
-                transform: translateX(25vw) translateY(8vh) rotate(45deg) scale(1);
-                opacity: 0.6;
-            }
-            50% {
-                transform: translateX(75vw) translateY(12vh) rotate(90deg) scale(0.9);
-                opacity: 0.5;
-            }
-            75% {
-                transform: translateX(90vw) translateY(5vh) rotate(135deg) scale(1.1);
-                opacity: 0.4;
-            }
-            95% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateX(110vw) translateY(18vh) rotate(180deg) scale(0.7);
-                opacity: 0;
-            }
-        }
-
-        /* Rover moving in lower area */
-        @keyframes roverMove {
-            0% {
-                transform: translateX(-120px) translateY(80vh) rotate(0deg) scale(0.9);
-                opacity: 0;
-            }
-            8% {
-                opacity: 0.5;
-            }
-            30% {
-                transform: translateX(30vw) translateY(75vh) rotate(10deg) scale(1);
-                opacity: 0.6;
-            }
-            60% {
-                transform: translateX(70vw) translateY(82vh) rotate(-5deg) scale(0.8);
-                opacity: 0.5;
-            }
-            90% {
-                transform: translateX(95vw) translateY(78vh) rotate(15deg) scale(1.2);
-                opacity: 0.4;
-            }
-            100% {
-                transform: translateX(120vw) translateY(85vh) rotate(0deg) scale(0.6);
-                opacity: 0;
-            }
-        }
-
-        /* Particle System */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--accent1);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-            opacity: 0.3;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) translateX(0px);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.3;
-            }
-            90% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translateY(-100px) translateX(200px);
-                opacity: 0;
-            }
-        }
-
-        /* Enhanced Hero Effects */
-        .hero-floating-icons {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-
-        .floating-icon {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.4;
-            animation: floatIcon 12s ease-in-out infinite;
-        }
-
-        .floating-icon:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .floating-icon:nth-child(2) {
-            top: 15%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-
-        .floating-icon:nth-child(3) {
-            bottom: 25%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        .floating-icon:nth-child(4) {
-            bottom: 20%;
-            right: 10%;
-            animation-delay: 6s;
-        }
-
-        @keyframes floatIcon {
-            0%, 100% {
-                transform: translateY(0px) rotate(0deg);
-                opacity: 0.2;
-            }
-            50% {
-                transform: translateY(-30px) rotate(180deg);
-                opacity: 0.6;
-            }
-        }
-
-        /* Workshop Card Enhanced Animations */
-        .workshop-card {
-            background: var(--surface);
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .workshop-card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(93, 91, 246, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
+        .loader.hide {
             opacity: 0;
-        }
-
-        .workshop-card:hover::after {
-            animation: shimmer 1.5s ease-in-out;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
-        }
-
-        /* Pulsing Background Elements */
-        .background-orbs {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             pointer-events: none;
-            z-index: -2;
         }
 
-        .orb {
-            position: absolute;
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(93, 91, 246, 0.3);
+            border-top-color: var(--accent1);
             border-radius: 50%;
-            filter: blur(60px);
-            animation: orbFloat 20s ease-in-out infinite;
+            animation: spin 1s linear infinite;
         }
 
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--glow-primary), transparent);
-            top: 10%;
-            left: 80%;
-            animation-delay: 0s;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--glow-secondary), transparent);
-            bottom: 20%;
-            left: 10%;
-            animation-delay: 7s;
-        }
-
-        .orb-3 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(93, 246, 181, 0.2), transparent);
-            top: 60%;
-            right: 15%;
-            animation-delay: 14s;
-        }
-
-        @keyframes orbFloat {
-            0%, 100% {
-                transform: translateY(0px) translateX(0px) scale(1);
-                opacity: 0.3;
-            }
-            33% {
-                transform: translateY(-100px) translateX(50px) scale(1.1);
-                opacity: 0.5;
-            }
-            66% {
-                transform: translateY(50px) translateX(-30px) scale(0.9);
-                opacity: 0.4;
-            }
-        }
-
-        /* Loading animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease forwards;
+        .loader-text {
+            margin-top: 1rem;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
-    <!-- Floating Animation Objects -->
-    <div class="floating-objects">
-        <div class="floating-drone">🛸</div>
-        <div class="floating-rover">🔬</div>
-    </div>
-
-    <!-- Particle System -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Background Orbs -->
-    <div class="background-orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p class="loader-text">Initializing Innovation...</p>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -847,55 +773,41 @@
         <div class="nav-container">
             <div class="logo">TEZZ X LABS</div>
             <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
                 <li><a href="#workshops">Workshops</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact" class="nav-cta">
+                    Book Demo
+                </a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-floating-icons">
-            <div class="floating-icon">🔬</div>
-            <div class="floating-icon">⚙️</div>
-            <div class="floating-icon">🧪</div>
-            <div class="floating-icon">🔧</div>
+        <!-- Video Background -->
+        <div class="video-background">
+            <video autoplay muted loop playsinline>
+                <source src="students-workshop.mp4" type="video/mp4">
+                <!-- Fallback for browsers that don't support video -->
+                <img src="students-workshop-poster.jpg" alt="Students working on STEM projects">
+            </video>
+            <div class="video-overlay"></div>
         </div>
+        
+        <div class="hero-grid"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+
         <div class="hero-content reveal">
-            <h1>Innovation Workshops</h1>
-            <p>Empowering critical, creative thinkers in India's schools through hands-on STEM experiences</p>
-            <a href="#contact" class="cta-button">Book a Demo</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section reveal">
-        <h2 class="section-title">Transforming Education</h2>
-        <div class="about-content">
-            <p>We design innovative workshop experiences that seamlessly align with India's National Education Policy (NEP) 2020, serving students from classes 6-12 across ICSE and CBSE curricula. Our mission is to bridge the gap between theoretical knowledge and practical application, fostering the next generation of innovators and problem-solvers through experiential learning that sparks curiosity and builds confidence.</p>
-        </div>
-    </section>
-
-    <!-- Capabilities Section -->
-    <section class="section reveal" id="services">
-        <h2 class="section-title">Our Capabilities</h2>
-        <div class="capabilities-grid">
-            <div class="capability-card reveal">
-                <h3>Curriculum Alignment</h3>
-                <p>Every workshop is meticulously designed to complement NEP 2020 guidelines while seamlessly integrating with existing ICSE and CBSE syllabi, ensuring educational continuity and enhanced learning outcomes.</p>
-            </div>
-            <div class="capability-card reveal">
-                <h3>Hands-on Kits & Facilitators</h3>
-                <p>Professional-grade learning kits paired with expert facilitators who bring real-world experience into the classroom, creating immersive learning environments that inspire and engage.</p>
-            </div>
-            <div class="capability-card reveal">
-                <h3>Outcome-based Reporting</h3>
-                <p>Comprehensive assessment frameworks that track student progress, skill development, and learning milestones, providing valuable insights to educators and parents.</p>
-            </div>
-            <div class="capability-card reveal">
-                <h3>Pan-India Delivery</h3>
-                <p>Scalable delivery model that reaches schools across urban and rural India, ensuring consistent quality and accessibility of innovative education experiences nationwide.</p>
+            <h1>Innovation Workshops for Future Leaders</h1>
+            <p>Transform your classroom into an innovation lab with hands-on STEM experiences aligned with NEP 2020</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    Start Your Journey
+                </a>
+                <a href="#workshops" class="btn btn-secondary">
+                    Explore Workshops
+                </a>
             </div>
         </div>
     </section>
@@ -903,100 +815,168 @@
     <!-- Workshops Section -->
     <section class="section reveal" id="workshops">
         <h2 class="section-title">Featured Workshops</h2>
+        <p class="section-subtitle">Hands-on learning experiences that bring science to life</p>
+        
         <div class="workshops-grid">
             <div class="workshop-card reveal">
                 <span class="workshop-icon">🚁</span>
-                <h3>Drone-Building Challenge</h3>
-                <div class="hook">Engineering takes flight</div>
-                <p>Students design, build, and program autonomous drones while learning aerodynamics, electronics, and coding. This workshop combines physics principles with hands-on engineering to create flying innovations.</p>
+                <h3>Drone Engineering Lab</h3>
+                <span class="workshop-tag">Aerospace Tech</span>
+                <p>Design, build, and program autonomous drones while mastering aerodynamics, electronics, and coding. Students create fully functional flying machines from scratch.</p>
             </div>
+            
             <div class="workshop-card reveal">
                 <span class="workshop-icon">🚀</span>
-                <h3>Mars-Rover Prototype</h3>
-                <div class="hook">Mission to the Red Planet</div>
-                <p>Teams engineer robotic rovers capable of navigating Martian terrain while collecting data. Students explore robotics, sensors, and space technology through this immersive planetary exploration experience.</p>
+                <h3>Mars Rover Challenge</h3>
+                <span class="workshop-tag">Space Robotics</span>
+                <p>Engineer robotic rovers capable of navigating Martian terrain. Integrate sensors, motors, and AI to solve real space exploration challenges.</p>
             </div>
+            
             <div class="workshop-card reveal">
-                <span class="workshop-icon">🏠</span>
-                <h3>Tiny-House Sustainable Build</h3>
-                <div class="hook">Architecture meets sustainability</div>
-                <p>Design and construct eco-friendly miniature homes using renewable energy systems and sustainable materials. This workshop integrates architecture, environmental science, and green technology.</p>
+                <span class="workshop-icon">🏡</span>
+                <h3>Sustainable Architecture</h3>
+                <span class="workshop-tag">Green Tech</span>
+                <p>Design eco-friendly miniature homes with solar panels, rainwater harvesting, and smart energy systems. Learn architecture meets environmental science.</p>
             </div>
+            
             <div class="workshop-card reveal">
-                <span class="workshop-icon">💧</span>
-                <h3>Water-Quality Lab</h3>
-                <div class="hook">Chemistry for clean water</div>
-                <p>Build water purification systems while testing contamination levels using advanced chemistry techniques. Students become environmental scientists tackling real-world water challenges.</p>
+                <span class="workshop-icon">🧪</span>
+                <h3>Water Quality Lab</h3>
+                <span class="workshop-tag">Environmental Science</span>
+                <p>Build water purification systems and test contamination levels using advanced chemistry techniques. Become environmental scientists tackling real-world challenges.</p>
             </div>
         </div>
     </section>
 
-    <!-- Metrics Section -->
-    <section class="metrics reveal">
-        <div class="metrics-container">
-            <div class="metric">
-                <span class="metric-number">15</span>
-                <div class="metric-label">Partner Schools</div>
+    <!-- Stats Section -->
+    <section class="stats-section reveal">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number">15+</span>
+                <div class="stat-label">Partner Schools</div>
             </div>
-            <div class="metric">
-                <span class="metric-number">9K</span>
-                <div class="metric-label">Learners Impacted</div>
+            <div class="stat-item">
+                <span class="stat-number">9K+</span>
+                <div class="stat-label">Students Impacted</div>
             </div>
-            <div class="metric">
-                <span class="metric-number">98%</span>
-                <div class="metric-label">Net Promoter Score</div>
+            <div class="stat-item">
+                <span class="stat-number">98%</span>
+                <div class="stat-label">Satisfaction Score</div>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">50+</span>
+                <div class="stat-label">Unique Workshops</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section reveal" id="features">
+        <h2 class="section-title">Why Choose Tezz X Labs?</h2>
+        <p class="section-subtitle">Complete innovation ecosystem for your school</p>
+        
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <span class="feature-icon">🎓</span>
+                <h3>NEP 2020 Aligned</h3>
+                <p>Every workshop is meticulously designed to complement the National Education Policy guidelines while enhancing existing curricula.</p>
+            </div>
+            
+            <div class="feature-card reveal">
+                <span class="feature-icon">👥</span>
+                <h3>Expert Facilitators</h3>
+                <p>Industry professionals and STEM experts guide students through immersive learning experiences with real-world applications.</p>
+            </div>
+            
+            <div class="feature-card reveal">
+                <span class="feature-icon">🧰</span>
+                <h3>Complete Kits</h3>
+                <p>Professional-grade materials and equipment provided for every workshop. No additional investment required from schools.</p>
+            </div>
+            
+            <div class="feature-card reveal">
+                <span class="feature-icon">📊</span>
+                <h3>Progress Tracking</h3>
+                <p>Comprehensive assessment frameworks track skill development and provide valuable insights to educators and parents.</p>
+            </div>
+            
+            <div class="feature-card reveal">
+                <span class="feature-icon">🌍</span>
+                <h3>Pan-India Reach</h3>
+                <p>Scalable delivery model ensures consistent quality across urban and rural schools nationwide.</p>
+            </div>
+            
+            <div class="feature-card reveal">
+                <span class="feature-icon">🏆</span>
+                <h3>Certification</h3>
+                <p>Students receive recognized certificates upon workshop completion, adding value to their academic portfolio.</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="section reveal" id="contact">
-        <h2 class="section-title">Get Started Today</h2>
+    <section class="contact-section reveal" id="contact">
+        <h2 class="section-title">Ready to Transform Education?</h2>
+        <p class="section-subtitle">Book a free demo workshop for your school today</p>
+        
         <form class="contact-form" id="contactForm">
             <div class="form-group">
-                <label for="name">Name *</label>
+                <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
-                <label for="email">Email *</label>
+                <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="school">School *</label>
+                <label for="school">School Name</label>
                 <input type="text" id="school" name="school" required>
             </div>
             <div class="form-group">
-                <label for="phone">Phone (Optional)</label>
+                <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone">
             </div>
             <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" placeholder="Tell us about your school's needs and interests..."></textarea>
+                <label for="message">Tell us about your needs</label>
+                <textarea id="message" name="message" rows="4" placeholder="Which workshops interest you? How many students? Any specific requirements?"></textarea>
             </div>
-            <button type="submit" class="submit-btn">Send Message</button>
+            <button type="submit" class="submit-btn">
+                ✉ Send Message
+            </button>
         </form>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="social-icons">
-                <a href="#" class="social-icon">📧</a>
-                <a href="#" class="social-icon">📱</a>
-                <a href="#" class="social-icon">🔗</a>
-                <a href="#" class="social-icon">📺</a>
+            <div class="social-links">
+                <a href="#" class="social-link">✉</a>
+                <a href="#" class="social-link">📞</a>
+                <a href="#" class="social-link">💼</a>
+                <a href="#" class="social-link">📺</a>
             </div>
-            <div class="copyright">© 2025 Tezz X Labs · Transforming Education Through Innovation</div>
+            <p style="color: var(--text-muted); margin-top: 1rem;">© 2025 Tezz X Labs • Transforming Education Through Innovation</p>
         </div>
     </footer>
 
     <!-- Toast Notification -->
     <div class="toast" id="toast">
-        Message sent successfully! We'll get back to you soon.
+        ✅ Message sent successfully! We'll contact you within 24 hours.
     </div>
 
     <script>
-        // Navigation scroll effect
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide loader when page loads
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const loader = document.getElementById('loader');
+                    if (loader) {
+                        loader.classList.add('hide');
+                    }
+                }, 1500);
+            });
+
+        // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 100) {
@@ -1007,36 +987,48 @@
         });
 
         // Scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
                 }
             });
-        }, observerOptions);
+        };
 
-        // Observe all reveal elements
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Parallax effect for orbs
+        window.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.orb');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 30;
+                const xPos = (x - 0.5) * speed;
+                const yPos = (y - 0.5) * speed;
+                
+                orb.style.transform = `translate(${xPos}px, ${yPos}px)`;
+            });
         });
 
         // Form submission
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Show toast notification
+            // Show toast
             const toast = document.getElementById('toast');
             toast.classList.add('show');
             
-            // Hide toast after 3 seconds
+            // Hide toast after 4 seconds
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 3000);
+            }, 4000);
             
             // Reset form
             e.target.reset();
@@ -1056,61 +1048,158 @@
             });
         });
 
-        // Create particle system
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+        // Add hover tilt effect to cards
+        const cards = document.querySelectorAll('.workshop-card, .feature-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+            });
             
-            for (let i = 0; i < particleCount; i++) {
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Animate stats on scroll
+        const animateStats = () => {
+            const statsSection = document.querySelector('.stats-section');
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            const observerOptions = {
+                threshold: 0.5
+            };
+            
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statNumbers.forEach(stat => {
+                            const target = stat.textContent;
+                            const number = parseInt(target);
+                            const suffix = target.replace(/[0-9]/g, '');
+                            let current = 0;
+                            
+                            const increment = number / 50;
+                            
+                            const updateNumber = () => {
+                                if (current < number) {
+                                    current += increment;
+                                    stat.textContent = Math.floor(current) + suffix;
+                                    requestAnimationFrame(updateNumber);
+                                } else {
+                                    stat.textContent = target;
+                                }
+                            };
+                            
+                            updateNumber();
+                        });
+                        
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            statsObserver.observe(statsSection);
+        };
+        
+        animateStats();
+
+        // Create floating tech icons
+        function createFloatingIcon() {
+            const icons = ['fa-microchip', 'fa-robot', 'fa-satellite', 'fa-flask', 'fa-atom', 'fa-dna'];
+            const icon = icons[Math.floor(Math.random() * icons.length)];
+            
+            const element = document.createElement('i');
+            element.className = `fas ${icon} floating-icon`;
+            element.style.left = Math.random() * 100 + '%';
+            element.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            element.style.animationDelay = '0s';
+            
+            document.querySelector('.floating-icons').appendChild(element);
+            
+            // Remove element after animation
+            setTimeout(() => {
+                element.remove();
+            }, 25000);
+        }
+
+        // Create new floating icons periodically
+        setInterval(createFloatingIcon, 5000);
+
+        // Logo click animation
+        document.querySelector('.logo').addEventListener('click', function() {
+            this.style.animation = 'none';
+            setTimeout(() => {
+                this.style.animation = 'glow-text 3s ease-in-out infinite';
+            }, 10);
+            
+            // Create particle burst
+            for (let i = 0; i < 20; i++) {
                 const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particle.style.position = 'fixed';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = i % 2 === 0 ? '#5D5BF6' : '#B14FFF';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1001';
                 
-                // Random colors between accent1 and accent2
-                const hue = Math.random() * 60 + 240; // Blue to purple range
-                particle.style.background = `hsl(${hue}, 70%, 60%)`;
-                particle.style.boxShadow = `0 0 10px hsl(${hue}, 70%, 60%)`;
+                const rect = this.getBoundingClientRect();
+                particle.style.left = rect.left + rect.width / 2 + 'px';
+                particle.style.top = rect.top + rect.height / 2 + 'px';
                 
-                particlesContainer.appendChild(particle);
+                document.body.appendChild(particle);
+                
+                const angle = (Math.PI * 2 * i) / 20;
+                const velocity = 100 + Math.random() * 100;
+                
+                particle.animate([
+                    {
+                        transform: 'translate(-2px, -2px) scale(1)',
+                        opacity: 1
+                    },
+                    {
+                        transform: `translate(${Math.cos(angle) * velocity - 2}px, ${Math.sin(angle) * velocity - 2}px) scale(0)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: 1000,
+                    easing: 'cubic-bezier(0, .9, .57, 1)'
+                }).onfinish = () => particle.remove();
             }
-        }
+        });
 
-        // Create multiple drones and rovers with better spacing
-        function createFloatingObjects() {
-            const container = document.querySelector('.floating-objects');
+        // Add gradient animation to buttons on hover
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.backgroundSize = '200% 200%';
+                this.style.animation = 'gradient-shift 2s ease infinite';
+            });
             
-            // Create 2 drones with different flight paths (upper area)
-            for (let i = 0; i < 2; i++) {
-                const drone = document.createElement('div');
-                drone.className = 'floating-drone';
-                drone.innerHTML = '🛸'; // Using UFO emoji for better drone representation
-                drone.style.animationDelay = (i * 15) + 's';
-                drone.style.animationDuration = (30 + i * 5) + 's';
-                // Slightly different flight heights
-                drone.style.setProperty('--flight-offset', (i * 8) + 'vh');
-                container.appendChild(drone);
-            }
-            
-            // Create 2 rovers with different paths (lower area)
-            for (let i = 0; i < 2; i++) {
-                const rover = document.createElement('div');
-                rover.className = 'floating-rover';
-                rover.innerHTML = '🔬'; // Using microscope for lab equipment feel
-                rover.style.animationDelay = (i * 18) + 's';
-                rover.style.animationDuration = (35 + i * 4) + 's';
-                // Different ground levels
-                rover.style.setProperty('--ground-offset', (i * 6) + 'vh');
-                container.appendChild(rover);
-            }
-        }
+            btn.addEventListener('mouseleave', function() {
+                this.style.animation = 'none';
+            });
+        });
 
-        // Initialize animations
-        window.addEventListener('load', () => {
-            document.querySelector('.hero-content').classList.add('fade-in-up');
-            createParticles();
-            createFloatingObjects();
+            // Create gradient shift animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes gradient-shift {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
