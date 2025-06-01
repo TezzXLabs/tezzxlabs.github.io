@@ -1,184 +1,159 @@
-<!DOCTYPE html>
+        /* Mobile Responsive */<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tezz X Labs - Where Future Innovators Are Born</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>TEZZ X LABS - The Future of STEM Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        /* Optimize all animations for speed */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: auto;
+        }
+
         :root {
-            --primary: #FF006E;
-            --secondary: #8338EC;
-            --accent: #3A86FF;
-            --yellow: #FFBE0B;
-            --green: #06FFA5;
-            --dark: #050517;
-            --light: #FFFFFF;
-            --gray: #8B8B9F;
+            --electric-blue: #0066FF;
+            --neon-cyan: #00D4FF;
+            --vibrant-purple: #8B5CF6;
+            --hot-pink: #FF1B6B;
+            --laser-green: #05FFA1;
+            --nuclear-orange: #FF6B35;
+            --pure-white: #FFFFFF;
+            --soft-gray: #F8FAFC;
+            --light-gray: #F1F5F9;
+            --medium-gray: #64748B;
+            --dark-gray: #334155;
+            --deep-black: #0F172A;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--dark);
-            color: var(--light);
+            background: var(--pure-white);
+            color: var(--deep-black);
             overflow-x: hidden;
-            cursor: none;
+            line-height: 1.6;
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.1s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor-follower {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 0, 110, 0.1);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor.hover {
-            transform: translate(-50%, -50%) scale(2);
-            background: rgba(255, 0, 110, 0.3);
-            border-color: var(--light);
-        }
-
-        /* Preloader */
-        .preloader {
+        /* Animated Background */
+        .bg-animation {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .preloader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .preloader-content {
-            text-align: center;
-        }
-
-        .preloader-logo {
-            font-size: 4rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 3s ease infinite;
-            margin-bottom: 2rem;
-        }
-
-        .preloader-progress {
-            width: 200px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--pure-white) 0%, var(--soft-gray) 50%, var(--light-gray) 100%);
         }
 
-        .preloader-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            animation: loading 2s ease-out;
-            transform-origin: left;
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            opacity: 0.08;
+            animation: float 8s infinite linear;
+            filter: blur(2px);
         }
 
-        @keyframes loading {
-            0% { transform: scaleX(0); }
-            100% { transform: scaleX(1); }
+        .floating-element:nth-child(1) {
+            width: 120px;
+            height: 120px;
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+            background: linear-gradient(45deg, var(--vibrant-purple), var(--hot-pink));
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .floating-element:nth-child(2) {
+            width: 180px;
+            height: 180px;
+            top: 55%;
+            left: 75%;
+            animation-delay: -8s;
+            background: linear-gradient(45deg, var(--laser-green), var(--neon-cyan));
+        }
+
+        .floating-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 75%;
+            left: 15%;
+            animation-delay: -16s;
+            background: linear-gradient(45deg, var(--nuclear-orange), var(--hot-pink));
+        }
+
+        .floating-element:nth-child(4) {
+            width: 140px;
+            height: 140px;
+            top: 25%;
+            left: 65%;
+            animation-delay: -24s;
+            background: linear-gradient(45deg, var(--electric-blue), var(--vibrant-purple));
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
         }
 
         /* Navigation */
         nav {
+            padding: 1.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
+            width: 100%;
             z-index: 1000;
-            padding: 1.5rem 3rem;
-            background: rgba(5, 5, 23, 0.8);
-            backdrop-filter: blur(20px);
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 1rem 3rem;
-            background: rgba(5, 5, 23, 0.95);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 900;
             font-family: 'Space Grotesk', sans-serif;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan), var(--laser-green));
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            animation: gradientShift 2s ease infinite;
         }
 
-        .logo:hover {
-            transform: scale(1.05);
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 3rem;
             align-items: center;
         }
 
         .nav-link {
-            color: var(--light);
+            color: var(--medium-gray);
             text-decoration: none;
             font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.1s ease;
             position: relative;
-            transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .nav-link::after {
@@ -188,487 +163,214 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            transition: width 0.1s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--deep-black);
         }
 
         .nav-link:hover::after {
             width: 100%;
         }
 
-        .nav-auth {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn-nav {
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
+        .nav-cta {
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-login {
-            color: var(--light);
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-login:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-signup {
-            color: var(--light);
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            font-weight: 700;
+            transition: all 0.1s ease;
             border: none;
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.2);
         }
 
-        .btn-signup::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--secondary), var(--accent));
-            transition: left 0.5s ease;
-        }
-
-        .btn-signup:hover::before {
-            left: 0;
-        }
-
-        .btn-signup span {
-            position: relative;
-            z-index: 1;
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0, 102, 255, 0.3);
         }
 
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6rem 3rem 3rem;
-            overflow: hidden;
+            padding: 4rem 2rem 1rem;
+            text-align: center;
+            position: relative;
         }
 
-        /* Animated Background */
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .hero-bg canvas {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* 3D Grid */
-        .grid-3d {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(131, 56, 236, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(131, 56, 236, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            transform: perspective(500px) rotateX(60deg) translateZ(-50px);
-            animation: grid-move 20s linear infinite;
-        }
-
-        @keyframes grid-move {
-            0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
-        }
-
-        /* Floating Elements */
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .shape {
-            position: absolute;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            filter: blur(40px);
-            opacity: 0.5;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .shape:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            left: 10%;
-            animation-duration: 25s;
-        }
-
-        .shape:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            top: 60%;
-            right: 10%;
-            background: linear-gradient(45deg, var(--secondary), var(--accent));
-            animation-duration: 20s;
-            animation-delay: 5s;
-        }
-
-        .shape:nth-child(3) {
-            width: 150px;
-            height: 150px;
-            bottom: 20%;
-            left: 30%;
-            background: linear-gradient(45deg, var(--accent), var(--yellow));
-            animation-duration: 15s;
-            animation-delay: 10s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-            33% {
-                transform: translate(30px, -30px) rotate(120deg);
-            }
-            66% {
-                transform: translate(-20px, 20px) rotate(240deg);
-            }
-        }
-
-        /* Hero Content */
         .hero-content {
             max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
             z-index: 10;
         }
 
-        .hero-text {
-            animation: slideInLeft 1s ease;
-        }
-
-        @keyframes slideInLeft {
-            0% {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero-text h1 {
-            font-size: clamp(3rem, 6vw, 5rem);
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 8rem);
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
             font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .text-gradient {
-            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
-            background-size: 200% 200%;
+            line-height: 0.9;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--deep-black), var(--electric-blue), var(--neon-cyan), var(--laser-green));
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientShift 5s ease infinite;
+            animation: gradientShift 3s ease infinite;
+            letter-spacing: -0.02em;
         }
 
-        .hero-text p {
-            font-size: 1.25rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
-            line-height: 1.6;
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--medium-gray);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.4;
         }
 
-        .hero-stats {
+        .hero-cta {
             display: flex;
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            display: block;
-        }
-
-        .stat-label {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        .hero-form-wrapper {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .form-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
             margin-bottom: 1.5rem;
         }
 
-        .input-group {
-            display: flex;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 60px;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .input-group:focus-within {
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);
-        }
-
-        .input-prefix {
-            display: flex;
-            align-items: center;
-            padding: 0 1rem;
-            color: var(--gray);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .input-group input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 1rem;
-            color: var(--light);
-            font-size: 1rem;
-            outline: none;
-        }
-
-        .input-group input::placeholder {
-            color: var(--gray);
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 1.2rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: var(--light);
-            border: none;
-            border-radius: 60px;
-            font-size: 1.1rem;
+        .btn-hero-primary {
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.1s ease;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 102, 255, 0.25);
         }
 
-        .btn-submit::before {
+        .btn-hero-primary::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, var(--secondary), var(--accent));
-            transition: left 0.5s ease;
+            background: linear-gradient(45deg, var(--laser-green), var(--hot-pink));
+            transition: left 0.1s ease;
+            z-index: -1;
         }
 
-        .btn-submit:hover::before {
+        .btn-hero-primary:hover::before {
             left: 0;
         }
 
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4);
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 45px rgba(0, 102, 255, 0.35);
         }
 
-        .btn-submit span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .form-note {
-            text-align: center;
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        /* Hero Visual */
-        .hero-visual {
-            position: relative;
-            animation: slideInRight 1s ease;
-        }
-
-        @keyframes slideInRight {
-            0% {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero-3d-container {
-            width: 100%;
-            height: 600px;
-            position: relative;
-            transform-style: preserve-3d;
-            animation: rotate3d 20s linear infinite;
-        }
-
-        @keyframes rotate3d {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
-        }
-
-        .workshop-card-3d {
-            position: absolute;
-            width: 250px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .workshop-card-3d:hover {
-            transform: translateZ(50px) scale(1.1);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(255, 0, 110, 0.3);
-        }
-
-        .workshop-card-3d:nth-child(1) {
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%) translateZ(200px);
-        }
-
-        .workshop-card-3d:nth-child(2) {
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%) rotateY(90deg) translateZ(200px);
-        }
-
-        .workshop-card-3d:nth-child(3) {
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%) rotateY(-90deg) translateZ(200px);
-        }
-
-        .workshop-card-3d:nth-child(4) {
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) rotateY(180deg) translateZ(200px);
-        }
-
-        .workshop-icon-3d {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .workshop-title-3d {
-            font-size: 1.2rem;
+        .btn-hero-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--deep-black);
+            padding: 1.2rem 3rem;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            transition: all 0.1s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         }
 
-        .workshop-desc-3d {
-            font-size: 0.9rem;
-            color: var(--gray);
+        .btn-hero-secondary:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
         }
 
-        /* Sections */
-        section {
-            padding: 5rem 3rem;
+        /* Workshops Section - The Star */
+        .workshops {
+            padding: 2rem 2rem;
             position: relative;
+            background: var(--soft-gray);
         }
 
-        .container {
-            max-width: 1200px;
+        .workshops-container {
+            max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
-        .section-header h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--vibrant-purple), var(--hot-pink));
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.25);
+        }
+
+        .section-title {
+            font-size: clamp(3rem, 6vw, 6rem);
+            font-weight: 900;
             font-family: 'Space Grotesk', sans-serif;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--deep-black), var(--electric-blue), var(--laser-green));
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradientShift 1s ease infinite;
         }
 
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--gray);
+        .section-description {
+            font-size: 1.3rem;
+            color: var(--medium-gray);
             max-width: 600px;
             margin: 0 auto;
+            font-weight: 300;
         }
 
-        /* Workshop Cards */
+        /* Workshop Grid */
         .workshops-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
-            margin-bottom: 4rem;
+            margin-top: 2rem;
         }
 
         .workshop-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 24px;
             padding: 2rem;
             position: relative;
+            transition: all 0.1s ease;
             overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             cursor: pointer;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
 
         .workshop-card::before {
@@ -677,229 +379,272 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-            transform-origin: left;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan), var(--laser-green), var(--hot-pink));
+            opacity: 0;
+            transition: opacity 0.1s ease;
+            z-index: -1;
         }
 
         .workshop-card:hover::before {
-            transform: scaleX(1);
+            opacity: 0.05;
         }
 
         .workshop-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-20px) scale(1.02);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 102, 255, 0.15);
+        }
+
+        .workshop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
         }
 
         .workshop-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
+            font-size: 3rem;
+            filter: drop-shadow(0 4px 20px rgba(0, 212, 255, 0.3));
+            animation: iconGlow 1s ease-in-out infinite alternate;
         }
 
-        .workshop-card:hover .workshop-icon {
-            transform: rotate(360deg) scale(1.1);
+        @keyframes iconGlow {
+            0% { filter: drop-shadow(0 4px 20px rgba(0, 212, 255, 0.3)); }
+            100% { filter: drop-shadow(0 8px 30px rgba(5, 255, 161, 0.4)); }
+        }
+
+        .workshop-status {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .status-badge {
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge-hot {
+            background: linear-gradient(45deg, var(--hot-pink), var(--nuclear-orange));
+            color: white;
+            animation: pulse 0.8s infinite;
+        }
+
+        .badge-new {
+            background: linear-gradient(45deg, var(--laser-green), var(--neon-cyan));
+            color: white;
+        }
+
+        .badge-advanced {
+            background: linear-gradient(45deg, var(--vibrant-purple), var(--electric-blue));
+            color: white;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .workshop-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            color: var(--deep-black);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
-        .workshop-tag {
-            display: inline-block;
-            background: rgba(255, 0, 110, 0.2);
-            color: var(--primary);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .workshop-desc {
-            color: var(--gray);
+        .workshop-description {
+            font-size: 1rem;
+            color: var(--medium-gray);
             line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
-        /* Features Bento Grid */
-        .features-bento {
+        .workshop-features {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
         }
 
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .feature-card.large {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+        }
+
+        .workshop-metrics {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--electric-blue), var(--laser-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: block;
         }
 
-        .feature-title {
-            font-size: 1.3rem;
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .workshop-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-workshop {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 15px;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.1s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        .feature-desc {
-            color: var(--gray);
-            line-height: 1.5;
+        .btn-primary {
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--deep-black);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-workshop:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 12px 35px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
         }
 
         /* Stats Section */
-        .stats-section {
-            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(131, 56, 236, 0.1));
-            border-radius: 30px;
-            padding: 4rem 3rem;
-            margin: 4rem 0;
-            position: relative;
-            overflow: hidden;
+        .stats {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--pure-white);
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            text-align: center;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .stat-item {
-            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            transition: all 0.1s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
 
-        .stat-value {
-            font-size: 3.5rem;
+        .stat-item:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 45px rgba(0, 102, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
             font-weight: 900;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background: linear-gradient(45deg, var(--electric-blue), var(--laser-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: block;
-            line-height: 1;
             margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            font-size: 1.1rem;
-            color: var(--gray);
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 5rem 3rem;
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .contact-info h3 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .contact-info p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .contact-form {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--light);
+            color: var(--medium-gray);
             font-weight: 600;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: var(--light);
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(255, 0, 110, 0.2);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
 
         /* Footer */
         footer {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 3rem;
+            padding: 2rem 2rem 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--soft-gray);
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan), var(--laser-green));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 1.5s ease infinite;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--medium-gray);
+            font-size: 1rem;
+            margin-bottom: 2rem;
         }
 
         .social-links {
@@ -912,602 +657,871 @@
         .social-link {
             width: 50px;
             height: 50px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            color: var(--light);
+            color: var(--medium-gray);
             font-size: 1.3rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.1s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .social-link:hover {
-            background: var(--primary);
-            transform: translateY(-5px) rotate(360deg);
-            box-shadow: 0 10px 20px rgba(255, 0, 110, 0.3);
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.25);
         }
 
-        /* Toast */
-        .toast {
-            position: fixed;
-            top: 100px;
-            right: 2rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: var(--light);
-            padding: 1rem 2rem;
-            border-radius: 10px;
-            transform: translateX(400px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 2000;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .toast.show {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .workshops-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .features-bento {
-                grid-template-columns: 1fr;
-            }
-
-            .feature-card.large {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-        }
-
-        /* Scroll Reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Parallax Stars */
-        .stars {
+        /* Contact Modal */
+        .modal {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 1;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
         }
 
-        .star {
+        .modal-content {
             position: absolute;
-            width: 2px;
-            height: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: white;
-            border-radius: 50%;
-            animation: twinkle 3s ease-in-out infinite;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 2001;
         }
 
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--deep-black);
+            font-family: 'Space Grotesk', sans-serif;
+            white-space: nowrap;
+        }
+
+        .modal-subtitle {
+            color: var(--medium-gray);
+            font-size: 1rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--medium-gray);
+            transition: color 0.1s ease;
+        }
+
+        .close-btn:hover {
+            color: var(--deep-black);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--deep-black);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.1s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--electric-blue);
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.2);
+            background: white;
+        }
+
+        .form-input::placeholder {
+            color: var(--medium-gray);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan)) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer !important;
+            transition: all 0.1s ease;
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+            position: relative;
+            z-index: 1000 !important;
+            pointer-events: auto !important;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0, 102, 255, 0.4);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .success-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-black);
+            margin-bottom: 1rem;
+        }
+
+        .success-text {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1rem 4rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .workshops-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .workshop-features {
+                grid-template-columns: 1fr;
+            }
+
+            .workshop-cta {
+                flex-direction: column;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-content">
-            <div class="preloader-logo">TEZZ X LABS</div>
-            <div class="preloader-progress">
-                <div class="preloader-progress-bar"></div>
-            </div>
-        </div>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
     </div>
 
-    <!-- Stars Background -->
-    <div class="stars" id="stars"></div>
-
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav>
         <div class="nav-container">
             <div class="logo">TEZZ X LABS</div>
             <ul class="nav-menu">
                 <li><a href="#workshops" class="nav-link">Workshops</a></li>
-                <li><a href="#features" class="nav-link">Features</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#impact" class="nav-link">Impact</a></li>
+                <li><a href="#partnership" class="nav-link">Partnership</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="nav-auth">
-                <a href="#login" class="btn-nav btn-login">Log in</a>
-                <a href="#signup" class="btn-nav btn-signup"><span>Join for free</span></a>
-            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/viewform" target="_blank" class="nav-cta">Partner With Us</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-bg">
-            <div class="grid-3d"></div>
-            <div class="floating-shapes">
-                <div class="shape"></div>
-                <div class="shape"></div>
-                <div class="shape"></div>
-            </div>
-        </div>
-
         <div class="hero-content">
-            <div class="hero-text">
-                <h1>Where Young <span class="text-gradient">Innovators</span> Build Tomorrow</h1>
-                <p>Join India's most exciting STEM workshops designed for students who dream big, think differently, and create fearlessly.</p>
-                
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">9K+</span>
-                        <span class="stat-label">Students</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">50+</span>
-                        <span class="stat-label">Workshops</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Schools</span>
-                    </div>
-                </div>
-
-                <div class="hero-form-wrapper">
-                    <h3 class="form-title">Start Your Innovation Journey</h3>
-                    <form id="heroSignupForm">
-                        <div class="input-group">
-                            <span class="input-prefix">🇮🇳 +91</span>
-                            <input type="tel" placeholder="Enter your mobile number" required pattern="[0-9]{10}" maxlength="10">
-                        </div>
-                        <button type="submit" class="btn-submit">
-                            <span>Get Started →</span>
-                        </button>
-                    </form>
-                    <p class="form-note">We'll send an OTP for verification</p>
-                </div>
-            </div>
-
-            <div class="hero-visual">
-                <div class="hero-3d-container">
-                    <div class="workshop-card-3d">
-                        <span class="workshop-icon-3d">🚁</span>
-                        <h4 class="workshop-title-3d">Drone Tech</h4>
-                        <p class="workshop-desc-3d">Build & fly your own drone</p>
-                    </div>
-                    <div class="workshop-card-3d">
-                        <span class="workshop-icon-3d">🤖</span>
-                        <h4 class="workshop-title-3d">Robotics</h4>
-                        <p class="workshop-desc-3d">Create intelligent robots</p>
-                    </div>
-                    <div class="workshop-card-3d">
-                        <span class="workshop-icon-3d">🚀</span>
-                        <h4 class="workshop-title-3d">Space Tech</h4>
-                        <p class="workshop-desc-3d">Design Mars rovers</p>
-                    </div>
-                    <div class="workshop-card-3d">
-                        <span class="workshop-icon-3d">🧪</span>
-                        <h4 class="workshop-title-3d">Chemistry</h4>
-                        <p class="workshop-desc-3d">Experiment & discover</p>
-                    </div>
-                </div>
+            <h1 class="hero-title">Where Young Innovators Build Tomorrow</h1>
+            <p class="hero-subtitle">Join India's most exciting STEM workshops designed for learners who dream big, think differently, and create fearlessly through immersive, hands-on experiences.</p>
+            <div class="hero-cta">
+                <a href="#workshops" class="btn-hero-primary">Explore Workshops</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/viewform" target="_blank" class="btn-hero-primary">Schedule Demo</a>
             </div>
         </div>
     </section>
 
     <!-- Workshops Section -->
-    <section id="workshops" class="reveal">
-        <div class="container">
+    <section class="workshops" id="workshops">
+        <div class="workshops-container">
             <div class="section-header">
-                <h2>Mind-Blowing Workshops</h2>
-                <p>Where textbooks come alive and students become inventors</p>
+                <div class="section-badge">Innovation Labs</div>
+                <h2 class="section-title">Cutting-Edge Workshops</h2>
+                <p class="section-description">Immersive experiences that blend real-world technology with hands-on learning, preparing learners for careers that don't exist yet.</p>
             </div>
 
             <div class="workshops-grid">
+                <!-- Mars Rover Mission -->
                 <div class="workshop-card">
-                    <div class="workshop-icon">🚁</div>
-                    <h3 class="workshop-title">Drone Masters Academy</h3>
-                    <span class="workshop-tag">Aerospace Engineering</span>
-                    <p class="workshop-desc">Design, build, and pilot autonomous drones. Learn aerodynamics, electronics, and programming while creating machines that actually fly!</p>
+                    <div class="workshop-header">
+                        <div class="workshop-icon">🚀</div>
+                        <div class="workshop-status">
+                            <div class="status-badge badge-hot">Most Popular</div>
+                        </div>
+                    </div>
+                    <h3 class="workshop-title">Mars Rover Engineering</h3>
+                    <p class="workshop-description">Design and build autonomous rovers using real NASA protocols. Learners program AI navigation, analyze Martian terrain data, and solve authentic space exploration challenges.</p>
+                    
+                    <div class="workshop-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">🤖</div>
+                            <span>AI Navigation</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📡</div>
+                            <span>Remote Control</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔬</div>
+                            <span>Data Analysis</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🌍</div>
+                            <span>NASA Data</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-metrics">
+                        <div class="metric">
+                            <span class="metric-value">12-18</span>
+                            <span class="metric-label">Age Range</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">5</span>
+                            <span class="metric-label">Days</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">24</span>
+                            <span class="metric-label">Max Students</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-cta">
+                        <button class="btn-workshop btn-primary">Learn More</button>
+                        <button class="btn-workshop btn-secondary">Book Demo</button>
+                    </div>
                 </div>
 
+                <!-- Biotech Innovation Lab -->
                 <div class="workshop-card">
-                    <div class="workshop-icon">🚀</div>
-                    <h3 class="workshop-title">Mars Mission Control</h3>
-                    <span class="workshop-tag">Space Robotics</span>
-                    <p class="workshop-desc">Engineer rovers that navigate Martian terrain. Use real NASA data to solve challenges faced by actual Mars missions.</p>
+                    <div class="workshop-header">
+                        <div class="workshop-icon">🧬</div>
+                        <div class="workshop-status">
+                            <div class="status-badge badge-advanced">Advanced</div>
+                        </div>
+                    </div>
+                    <h3 class="workshop-title">Biotech Innovation Lab</h3>
+                    <p class="workshop-description">Engineer living systems and explore genetic programming. Learners work with CRISPR technology, grow bio-materials, and develop solutions for environmental challenges.</p>
+                    
+                    <div class="workshop-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">✂️</div>
+                            <span>CRISPR Basics</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🌱</div>
+                            <span>Bio-Materials</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔬</div>
+                            <span>Lab Techniques</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🌍</div>
+                            <span>Environmental Focus</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-metrics">
+                        <div class="metric">
+                            <span class="metric-value">16-20</span>
+                            <span class="metric-label">Age Range</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">10</span>
+                            <span class="metric-label">Days</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">12</span>
+                            <span class="metric-label">Max Students</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-cta">
+                        <button class="btn-workshop btn-primary">Learn More</button>
+                        <button class="btn-workshop btn-secondary">Book Demo</button>
+                    </div>
                 </div>
 
+                <!-- Quantum Computing Lab -->
                 <div class="workshop-card">
-                    <div class="workshop-icon">🏗️</div>
-                    <h3 class="workshop-title">Eco Architecture Lab</h3>
-                    <span class="workshop-tag">Sustainable Design</span>
-                    <p class="workshop-desc">Create tiny sustainable homes with solar panels, rainwater harvesting, and smart IoT systems. Build the future of green living!</p>
+                    <div class="workshop-header">
+                        <div class="workshop-icon">⚛️</div>
+                        <div class="workshop-status">
+                            <div class="status-badge badge-new">Cutting Edge</div>
+                        </div>
+                    </div>
+                    <h3 class="workshop-title">Quantum Computing Lab</h3>
+                    <p class="workshop-description">Explore the fundamentals of quantum mechanics through hands-on programming. Learners build quantum algorithms, understand superposition, and program real quantum computers.</p>
+                    
+                    <div class="workshop-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">💻</div>
+                            <span>Quantum Programming</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔮</div>
+                            <span>Superposition</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔗</div>
+                            <span>Entanglement</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🌐</div>
+                            <span>IBM Quantum Access</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-metrics">
+                        <div class="metric">
+                            <span class="metric-value">15-20</span>
+                            <span class="metric-label">Age Range</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">6</span>
+                            <span class="metric-label">Days</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">20</span>
+                            <span class="metric-label">Max Students</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-cta">
+                        <button class="btn-workshop btn-primary">Learn More</button>
+                        <button class="btn-workshop btn-secondary">Book Demo</button>
+                    </div>
                 </div>
 
+                <!-- Neural Interface Design -->
                 <div class="workshop-card">
-                    <div class="workshop-icon">💧</div>
-                    <h3 class="workshop-title">Water Warriors</h3>
-                    <span class="workshop-tag">Environmental Science</span>
-                    <p class="workshop-desc">Design water purification systems and test water quality. Become environmental heroes solving real water crisis challenges.</p>
+                    <div class="workshop-header">
+                        <div class="workshop-icon">🧠</div>
+                        <div class="workshop-status">
+                            <div class="status-badge badge-hot">Revolutionary</div>
+                        </div>
+                    </div>
+                    <h3 class="workshop-title">Neural Interface Design</h3>
+                    <p class="workshop-description">Build brain-computer interfaces and explore neurotechnology. Learners create EEG-controlled devices, understand neural signals, and design mind-controlled applications.</p>
+                    
+                    <div class="workshop-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">📡</div>
+                            <span>EEG Technology</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎯</div>
+                            <span>Mind Control</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <span>Signal Processing</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎮</div>
+                            <span>Interactive Apps</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-metrics">
+                        <div class="metric">
+                            <span class="metric-value">16-22</span>
+                            <span class="metric-label">Age Range</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">8</span>
+                            <span class="metric-label">Days</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">14</span>
+                            <span class="metric-label">Max Students</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-cta">
+                        <button class="btn-workshop btn-primary">Learn More</button>
+                        <button class="btn-workshop btn-secondary">Book Demo</button>
+                    </div>
                 </div>
 
+                <!-- Space Habitat Engineering -->
                 <div class="workshop-card">
-                    <div class="workshop-icon">🤖</div>
-                    <h3 class="workshop-title">AI Robotics Studio</h3>
-                    <span class="workshop-tag">Machine Learning</span>
-                    <p class="workshop-desc">Build robots that can see, think, and learn. Program AI-powered machines that respond to voice commands and recognize objects.</p>
-                </div>
+                    <div class="workshop-header">
+                        <div class="workshop-icon">🏗️</div>
+                        <div class="workshop-status">
+                            <div class="status-badge badge-advanced">Epic Scale</div>
+                        </div>
+                    </div>
+                    <h3 class="workshop-title">Space Habitat Engineering</h3>
+                    <p class="workshop-description">Design sustainable habitats for Mars and beyond. Learners tackle life support systems, radiation shielding, food production, and psychological factors of space colonization.</p>
+                    
+                    <div class="workshop-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">🌱</div>
+                            <span>Life Support</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🛡️</div>
+                            <span>Radiation Shield</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🥬</div>
+                            <span>Space Agriculture</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🏠</div>
+                            <span>Habitat Design</span>
+                        </div>
+                    </div>
 
-                <div class="workshop-card">
-                    <div class="workshop-icon">⚡</div>
-                    <h3 class="workshop-title">Energy Innovators</h3>
-                    <span class="workshop-tag">Renewable Energy</span>
-                    <p class="workshop-desc">Create wind turbines, solar cars, and energy storage systems. Power the future with your own renewable energy inventions!</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="workshop-metrics">
+                        <div class="metric">
+                            <span class="metric-value">14-20</span>
+                            <span class="metric-label">Age Range</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">12</span>
+                            <span class="metric-label">Days</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">18</span>
+                            <span class="metric-label">Max Students</span>
+                        </div>
+                    </div>
 
-    <!-- Features Section -->
-    <section id="features" class="reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>Why We're Different</h2>
-                <p>Experience the future of education today</p>
-            </div>
-
-            <div class="features-bento">
-                <div class="feature-card large">
-                    <span class="feature-icon">🎯</span>
-                    <h3 class="feature-title">NEP 2020 Aligned</h3>
-                    <p class="feature-desc">Every workshop is meticulously designed to complement the National Education Policy 2020. Your students earn credits while having the time of their lives!</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">🔬</span>
-                    <h3 class="feature-title">Industry Experts</h3>
-                    <p class="feature-desc">Learn from professionals who've worked at ISRO, Tesla, and top tech companies.</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">🛠️</span>
-                    <h3 class="feature-title">Complete Kits</h3>
-                    <p class="feature-desc">Professional-grade materials and tools provided. No hidden costs!</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">📊</span>
-                    <h3 class="feature-title">Progress Analytics</h3>
-                    <p class="feature-desc">Real-time tracking of student progress with detailed skill assessments.</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">🏆</span>
-                    <h3 class="feature-title">Certifications</h3>
-                    <p class="feature-desc">Industry-recognized certificates that boost college applications.</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">🌍</span>
-                    <h3 class="feature-title">Pan-India Delivery</h3>
-                    <p class="feature-desc">Available in 50+ cities with consistent quality everywhere.</p>
+                    <div class="workshop-cta">
+                        <button class="btn-workshop btn-primary">Learn More</button>
+                        <button class="btn-workshop btn-secondary">Book Demo</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-section reveal">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-value">98%</span>
-                    <span class="stat-label">Student Satisfaction</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-value">500+</span>
-                    <span class="stat-label">Projects Built</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-value">50+</span>
-                    <span class="stat-label">Expert Mentors</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-value">24/7</span>
-                    <span class="stat-label">Support Available</span>
-                </div>
-            </div>
+    <section class="stats" id="impact">
+        <div class="section-header">
+            <div class="section-badge" style="background: linear-gradient(45deg, var(--laser-green), var(--neon-cyan));">Global Impact</div>
+            <h2 class="section-title">Transforming Education Worldwide</h2>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section reveal">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Ready to Transform Your School?</h3>
-                    <p>Join the education revolution. Give your students experiences they'll remember forever.</p>
-                </div>
-
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="school">School Name</label>
-                        <input type="text" id="school" name="school" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" class="form-control" placeholder="Tell us about your requirements..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">
-                        <span>Send Message →</span>
-                    </button>
-                </form>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">50K+</span>
+                <span class="stat-label">Learners Inspired</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">200+</span>
+                <span class="stat-label">Partner Schools</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">25+</span>
+                <span class="stat-label">Countries</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">99%</span>
+                <span class="stat-label">Satisfaction Rate</span>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="footer-content">
+            <div class="footer-logo">TEZZ X LABS</div>
+            <p class="footer-text">Pioneering the future of STEM education through immersive, cutting-edge workshops that inspire the next generation of innovators.</p>
+            
             <div class="social-links">
-                <a href="#" class="social-link">📧</a>
-                <a href="#" class="social-link">📱</a>
+                <a href="mailto:partnerships@tezzxlabs.com" class="social-link">📧</a>
+                <a href="tel:+919876543210" class="social-link">📱</a>
                 <a href="#" class="social-link">💼</a>
-                <a href="#" class="social-link">📹</a>
+                <a href="#" class="social-link">🚀</a>
             </div>
-            <p style="color: var(--gray);">© 2025 Tezz X Labs • Inspiring Future Innovators</p>
+            
+            <p style="color: var(--medium-gray); font-size: 1rem;">© 2025 TEZZ X LABS • Where Dreams Become Reality</p>
         </div>
     </footer>
 
-    <!-- Toast -->
-    <div class="toast" id="toast"></div>
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeContactModal()">&times;</button>
+            <div id="modalForm">
+                <div class="modal-header">
+                    <h3 class="modal-title">Get Started with TEZZ X LABS</h3>
+                    <p class="modal-subtitle">Let's discuss how we can transform your learners into tomorrow's innovators</p>
+                </div>
+                
+                <form onsubmit="handleFormSubmit(event)" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" class="form-input" name="name" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" class="form-input" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Phone Number *</label>
+                        <input type="tel" class="form-input" name="phone" required placeholder="+91 98765 43210">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Organization/School</label>
+                        <input type="text" class="form-input" name="organization" placeholder="Your organization name">
+                    </div>
+                    
+                    <button type="submit" class="form-submit" id="submitBtn">
+                        <span>Send Request</span>
+                    </button>
+                </form>
+            </div>
+
+            <div id="successMessage" class="success-message" style="display: none;">
+                <div class="success-icon">🚀</div>
+                <h3 class="success-title">Request Sent Successfully!</h3>
+                <p class="success-text">Thank you for your interest in TEZZ X LABS. We've received your request and will get back to you within 24 hours with detailed information about our workshops and partnership opportunities.</p>
+                <br>
+                <button class="form-submit" onclick="closeContactModal()">Close</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Initialize app when DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            // Hide preloader
-            setTimeout(() => {
-                document.getElementById('preloader').classList.add('hidden');
-            }, 2000);
+        // Contact Modal Functions
+        function openContactModal() {
+            document.getElementById('contactModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            // Reset modal to form view
+            document.getElementById('modalForm').style.display = 'block';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('contactForm').reset();
+        }
 
-            // Custom cursor
-            const cursor = document.querySelector('.cursor');
-            const cursorFollower = document.querySelector('.cursor-follower');
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Google Forms Integration - CONFIGURED FOR YOUR FORM
+        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/formResponse';
+        
+        // YOUR ACTUAL GOOGLE FORM FIELD IDs
+        const FORM_FIELDS = {
+            name: 'entry.1123369645',      // Full Name field
+            email: 'entry.138826326',      // Email Address field  
+            phone: 'entry.142036428',      // Phone Number field
+            organization: 'entry.82140079' // Organization field
+        };
+
+        // ENTRY ID DETECTIVE - FIND THE REAL ENTRY IDs
+        
+        function handleFormSubmit(event) {
+            event.preventDefault();
             
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = submitBtn.querySelector('span');
+            
+            btnText.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Get form values
+            const name = document.querySelector('input[name="name"]').value.trim();
+            const email = document.querySelector('input[name="email"]').value.trim();
+            const phone = document.querySelector('input[name="phone"]').value.trim();
+            const organization = document.querySelector('input[name="organization"]').value.trim() || 'Not specified';
+
+            console.log('=== CURRENT ENTRY IDs (MIGHT BE WRONG) ===');
+            console.log('Name: entry.1123369645');
+            console.log('Email: entry.138826326'); 
+            console.log('Phone: entry.142036428');
+            console.log('Organization: entry.82140079');
+            console.log('');
+            console.log('=== TO FIND CORRECT ENTRY IDs ===');
+            console.log('1. Go to: https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/viewform');
+            console.log('2. Right-click on the NAME field → Inspect Element');
+            console.log('3. Look for: name="entry.XXXXXXXX"');
+            console.log('4. Repeat for Email, Phone, Organization fields');
+            console.log('5. Call updateEntryIds() with correct IDs');
+
+            // Try current IDs (probably wrong)
+            submitToGoogleForms(name, email, phone, organization);
+
+            setTimeout(() => {
+                document.getElementById('modalForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
                 
-                setTimeout(() => {
-                    cursorFollower.style.left = e.clientX + 'px';
-                    cursorFollower.style.top = e.clientY + 'px';
-                }, 100);
+                btnText.textContent = 'Send Request';
+                submitBtn.disabled = false;
+            }, 1500);
+
+            return false;
+        }
+
+        function submitToGoogleForms(name, email, phone, organization) {
+            const form = document.createElement('form');
+            form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/formResponse';
+            form.method = 'POST';
+            form.target = '_blank';
+            
+            const fields = [
+                {name: 'entry.1123369645', value: name},    // Name field
+                {name: 'entry.138826326', value: email},     // Email field
+                {name: 'entry.142036428', value: phone},     // Phone field
+                {name: 'entry.82140079', value: organization} // Organization field
+            ];
+
+            fields.forEach(field => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = field.name;
+                input.value = field.value;
+                form.appendChild(input);
             });
 
-            // Add hover effect to interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, .workshop-card, .feature-card');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
+            document.body.appendChild(form);
+            form.submit();
+            
+            setTimeout(() => {
+                try {
+                    document.body.removeChild(form);
+                } catch(e) {}
+            }, 1000);
+        }
 
-            // Generate stars
-            const starsContainer = document.getElementById('stars');
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                starsContainer.appendChild(star);
-            }
+        // Function to update entry IDs when you find the correct ones
+        function updateEntryIds(nameId, emailId, phoneId, orgId) {
+            console.log('=== UPDATING ENTRY IDs ===');
+            console.log('Name ID:', nameId);
+            console.log('Email ID:', emailId);
+            console.log('Phone ID:', phoneId);
+            console.log('Organization ID:', orgId);
+            
+            // Store the correct IDs
+            window.correctEntryIds = {
+                name: nameId,
+                email: emailId,
+                phone: phoneId,
+                organization: orgId
+            };
+            
+            console.log('Entry IDs updated! Try submitting the form again.');
+        }
 
-            // Navbar scroll effect
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // Smooth scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Reveal animations
-            const reveals = document.querySelectorAll('.reveal');
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            reveals.forEach(el => revealObserver.observe(el));
-
-            // Animate stats
-            const animateValue = (element, start, end, duration) => {
-                let startTimestamp = null;
-                const step = (timestamp) => {
-                    if (!startTimestamp) startTimestamp = timestamp;
-                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    element.textContent = Math.floor(progress * (end - start) + start) + element.dataset.suffix;
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    }
-                };
-                window.requestAnimationFrame(step);
+        // Modified submit function that uses correct IDs if available
+        function submitWithCorrectIds(name, email, phone, organization) {
+            const ids = window.correctEntryIds || {
+                name: 'entry.1123369645',
+                email: 'entry.138826326', 
+                phone: 'entry.142036428',
+                organization: 'entry.82140079'
             };
 
-            // Observe stats section
-            const statsSection = document.querySelector('.stats-section');
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const statValues = document.querySelectorAll('.stat-value');
-                        statValues.forEach(stat => {
-                            const value = stat.textContent;
-                            const number = parseInt(value);
-                            const suffix = value.replace(/[0-9]/g, '');
-                            stat.dataset.suffix = suffix;
-                            animateValue(stat, 0, number, 2000);
-                        });
-                        statsObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
+            const form = document.createElement('form');
+            form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/formResponse';
+            form.method = 'POST';
+            form.target = '_blank';
+            
+            const fields = [
+                {name: ids.name, value: name},
+                {name: ids.email, value: email},
+                {name: ids.phone, value: phone},
+                {name: ids.organization, value: organization}
+            ];
 
-            if (statsSection) {
-                statsObserver.observe(statsSection);
-            }
+            console.log('=== SUBMITTING WITH IDs ===');
+            fields.forEach(field => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = field.name;
+                input.value = field.value;
+                form.appendChild(input);
+                console.log(`${field.name} = ${field.value}`);
+            });
 
-            // Form submissions
-            const heroForm = document.getElementById('heroSignupForm');
-            const contactForm = document.getElementById('contactForm');
-            const toast = document.getElementById('toast');
+            document.body.appendChild(form);
+            form.submit();
+            
+            setTimeout(() => {
+                try {
+                    document.body.removeChild(form);
+                } catch(e) {}
+            }, 1000);
+        }
 
-            function showToast(message, duration = 4000) {
-                toast.textContent = message;
-                toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, duration);
-            }
+        // EASY WAY: Open your form and run this in console
+        function findEntryIds() {
+            console.log('=== STEP-BY-STEP GUIDE TO FIND ENTRY IDs ===');
+            console.log('');
+            console.log('1. Open this link in new tab:');
+            console.log('   https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/viewform');
+            console.log('');
+            console.log('2. Right-click on the NAME input field');
+            console.log('3. Click "Inspect Element"');
+            console.log('4. Look for something like: name="entry.1234567890"');
+            console.log('5. Copy that number');
+            console.log('');
+            console.log('6. Repeat for Email, Phone, Organization fields');
+            console.log('');
+            console.log('7. When you have all 4 numbers, call:');
+            console.log('   updateEntryIds("entry.NAME_ID", "entry.EMAIL_ID", "entry.PHONE_ID", "entry.ORG_ID")');
+            console.log('');
+            console.log('Example:');
+            console.log('updateEntryIds("entry.1234567890", "entry.0987654321", "entry.5555555555", "entry.9999999999")');
+            
+            // Also open the form for them
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/viewform', '_blank');
+        }
 
-            if (heroForm) {
-                heroForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    const phone = e.target.querySelector('input[type="tel"]').value;
-                    
-                    try {
-                        const response = await fetch('http://localhost:3000/api/signup', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ phone })
-                        });
-                        
-                        const result = await response.json();
-                        showToast(result.success ? `✅ OTP sent to +91 ${phone}` : '❌ Failed to send OTP');
-                        
-                        if (result.success) {
-                            e.target.reset();
-                        }
-                    } catch (error) {
-                        showToast('❌ Network error. Please try again.');
-                    }
-                });
-            }
+        // Quick test function
+        function quickTest() {
+            const testData = {
+                name: 'Test Name',
+                email: 'test@email.com',
+                phone: '1234567890', 
+                organization: 'Test Org'
+            };
+            
+            console.log('=== QUICK TEST WITH CURRENT IDs ===');
+            submitToGoogleForms(testData.name, testData.email, testData.phone, testData.organization);
+            console.log('Check the new tab - if it says "Your response has been recorded", the IDs are correct');
+            console.log('If you see an error, the entry IDs are wrong');
+        }
 
-            if (contactForm) {
-                contactForm.addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    
-                    const formData = {
-                        name: e.target.name.value,
-                        email: e.target.email.value,
-                        school: e.target.school.value,
-                        phone: e.target.phone.value,
-                        message: e.target.message.value
-                    };
-                    
-                    try {
-                        const response = await fetch('http://localhost:3000/api/contact', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(formData)
-                        });
-                        
-                        const result = await response.json();
-                        showToast(result.success ? '✅ Message sent successfully!' : '❌ Failed to send message');
-                        
-                        if (result.success) {
-                            e.target.reset();
-                        }
-                    } catch (error) {
-                        showToast('❌ Network error. Please try again.');
+        // Add click handler as backup
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function(e) {
+                    console.log('Button clicked directly!');
+                    const form = document.getElementById('contactForm');
+                    if (form) {
+                        handleFormSubmit(e);
                     }
                 });
             }
+        });
 
-            // Parallax effect for shapes
-            document.addEventListener('mousemove', (e) => {
-                const shapes = document.querySelectorAll('.shape');
-                const x = e.clientX / window.innerWidth;
-                const y = e.clientY / window.innerHeight;
-                
-                shapes.forEach((shape, index) => {
-                    const speed = (index + 1) * 20;
-                    const xPos = (x - 0.5) * speed;
-                    const yPos = (y - 0.5) * speed;
-                    shape.style.transform = `translate(${xPos}px, ${yPos}px)`;
-                });
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target === modal) {
+                closeContactModal();
+            }
+        }
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+
+        // Smooth scrolling for navigation links - INSTANT
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Instant scroll - no smooth behavior
+                    target.scrollIntoView({
+                        behavior: 'auto',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.backdropFilter = 'blur(25px)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(20px)';
+            }
+        });
+
+        // Interactive workshop cards - INSTANT
+        document.querySelectorAll('.workshop-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.01)';
+                card.style.transition = 'transform 0.1s ease';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.transition = 'transform 0.1s ease';
             });
         });
     </script>
 </body>
 </html>
+                
