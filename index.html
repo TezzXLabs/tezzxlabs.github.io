@@ -1,4 +1,4 @@
-        /* Mobile Responsive */<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -132,7 +132,7 @@
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientShift 2s ease infinite;
+            animation: gradientShift 4s ease infinite;
         }
 
         @keyframes gradientShift {
@@ -219,7 +219,7 @@
             background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientShift 3s ease infinite;
+            animation: gradientShift 6s ease infinite;
             letter-spacing: -0.02em;
         }
 
@@ -341,7 +341,7 @@
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientShift 1s ease infinite;
+            animation: gradientShift 5s ease infinite;
         }
 
         .section-description {
@@ -355,8 +355,8 @@
         /* Workshop Grid */
         .workshops-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
@@ -364,13 +364,16 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 24px;
-            padding: 2rem;
+            border-radius: 20px;
+            padding: 1.5rem;
             position: relative;
-            transition: all 0.1s ease;
+            transition: all 0.2s ease;
             overflow: hidden;
             cursor: pointer;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .workshop-card::before {
@@ -382,7 +385,7 @@
             bottom: 0;
             background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan), var(--laser-green), var(--hot-pink));
             opacity: 0;
-            transition: opacity 0.1s ease;
+            transition: opacity 0.2s ease;
             z-index: -1;
         }
 
@@ -391,50 +394,37 @@
         }
 
         .workshop-card:hover {
-            transform: translateY(-20px) scale(1.02);
+            transform: translateY(-8px) scale(1.01);
             border-color: rgba(0, 212, 255, 0.3);
-            box-shadow: 0 30px 60px rgba(0, 102, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.15);
         }
 
         .workshop-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .workshop-icon {
-            font-size: 3rem;
-            filter: drop-shadow(0 4px 20px rgba(0, 212, 255, 0.3));
-            animation: iconGlow 1s ease-in-out infinite alternate;
-        }
-
-        @keyframes iconGlow {
-            0% { filter: drop-shadow(0 4px 20px rgba(0, 212, 255, 0.3)); }
-            100% { filter: drop-shadow(0 8px 30px rgba(5, 255, 161, 0.4)); }
-        }
-
-        .workshop-status {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            font-size: 2.5rem;
+            filter: drop-shadow(0 4px 15px rgba(0, 212, 255, 0.3));
         }
 
         .status-badge {
             padding: 0.4rem 1rem;
-            border-radius: 15px;
+            border-radius: 12px;
             font-size: 0.75rem;
             font-weight: 700;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .badge-hot {
             background: linear-gradient(45deg, var(--hot-pink), var(--nuclear-orange));
             color: white;
-            animation: pulse 0.8s infinite;
         }
 
         .badge-new {
@@ -445,11 +435,6 @@
         .badge-advanced {
             background: linear-gradient(45deg, var(--vibrant-purple), var(--electric-blue));
             color: white;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
         }
 
         .workshop-title {
@@ -464,107 +449,95 @@
             font-size: 1rem;
             color: var(--medium-gray);
             line-height: 1.6;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
         }
 
-        .workshop-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
+        .workshop-subjects {
+            margin-bottom: 1rem;
         }
 
-        .feature-item {
+        .subjects-header {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .subjects-icon {
+            font-size: 1rem;
+            color: var(--electric-blue);
+        }
+
+        .subjects-title {
             font-size: 0.9rem;
-            color: var(--medium-gray);
-        }
-
-        .feature-icon {
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.7rem;
-        }
-
-        .workshop-metrics {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            padding: 0.8rem;
-            background: rgba(0, 0, 0, 0.02);
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .metric {
-            text-align: center;
-        }
-
-        .metric-value {
-            font-size: 1.3rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--electric-blue), var(--laser-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-        }
-
-        .metric-label {
-            font-size: 0.8rem;
-            color: var(--medium-gray);
+            font-weight: 700;
+            color: var(--deep-black);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .workshop-cta {
+        .subjects-list {
             display: flex;
-            gap: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
-        .btn-workshop {
-            flex: 1;
-            padding: 0.8rem;
-            border-radius: 15px;
-            font-weight: 700;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.1s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
+        .subject-tag {
             background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan));
             color: white;
-            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0, 102, 255, 0.2);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.9);
+        .workshop-skills {
+            background: rgba(248, 250, 252, 0.8);
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: auto;
+        }
+
+        .skills-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .skills-icon {
+            font-size: 1rem;
+            color: var(--laser-green);
+        }
+
+        .skills-title {
+            font-size: 0.9rem;
+            font-weight: 700;
             color: var(--deep-black);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .btn-workshop:hover {
-            transform: translateY(-2px);
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.6rem;
         }
 
-        .btn-primary:hover {
-            box-shadow: 0 12px 35px rgba(0, 102, 255, 0.3);
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+            font-weight: 600;
         }
 
-        .btn-secondary:hover {
-            background: white;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        .skill-emoji {
+            font-size: 1rem;
         }
 
         /* Stats Section */
@@ -637,7 +610,7 @@
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradientShift 1.5s ease infinite;
+            animation: gradientShift 4s ease infinite;
             margin-bottom: 1rem;
         }
 
@@ -678,182 +651,198 @@
             box-shadow: 0 15px 35px rgba(0, 102, 255, 0.25);
         }
 
-        /* Contact Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            z-index: 2001;
-        }
-
-        .modal-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .modal-title {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: var(--deep-black);
-            font-family: 'Space Grotesk', sans-serif;
-            white-space: nowrap;
-        }
-
-        .modal-subtitle {
-            color: var(--medium-gray);
-            font-size: 1rem;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--medium-gray);
-            transition: color 0.1s ease;
-        }
-
-        .close-btn:hover {
-            color: var(--deep-black);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--deep-black);
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.1s ease;
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--electric-blue);
-            box-shadow: 0 0 20px rgba(0, 102, 255, 0.2);
-            background: white;
-        }
-
-        .form-input::placeholder {
-            color: var(--medium-gray);
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 1rem;
-            background: linear-gradient(45deg, var(--electric-blue), var(--neon-cyan)) !important;
-            color: white !important;
-            border: none !important;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer !important;
-            transition: all 0.1s ease;
-            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
-            position: relative;
-            z-index: 1000 !important;
-            pointer-events: auto !important;
-        }
-
-        .form-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(0, 102, 255, 0.4);
-        }
-
-        .form-submit:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Success Message */
-        .success-message {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .success-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .success-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--deep-black);
-            margin-bottom: 1rem;
-        }
-
-        .success-text {
-            color: var(--medium-gray);
-            line-height: 1.6;
-        }
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
             }
 
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
             .hero {
                 padding: 6rem 1rem 4rem;
+                min-height: 80vh;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 12vw, 4rem);
+                line-height: 1.1;
+                margin-bottom: 1rem;
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                margin-bottom: 2rem;
             }
 
             .hero-cta {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
+            }
+
+            .btn-hero-primary, .btn-hero-secondary {
+                width: 100%;
+                max-width: 280px;
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .workshops {
+                padding: 1.5rem 1rem;
+            }
+
+            .section-title {
+                font-size: clamp(2rem, 8vw, 3.5rem);
+            }
+
+            .section-description {
+                font-size: 1.1rem;
+                padding: 0 1rem;
             }
 
             .workshops-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
+                margin-top: 1.5rem;
             }
 
-            .workshop-features {
+            .workshop-card {
+                padding: 1.2rem;
+                margin: 0 0.5rem;
+            }
+
+            .workshop-icon {
+                font-size: 2rem;
+            }
+
+            .workshop-title {
+                font-size: 1.3rem;
+                line-height: 1.3;
+            }
+
+            .workshop-description {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            .subjects-list, .skills-grid {
+                gap: 0.4rem;
+            }
+
+            .subject-tag {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .skills-grid {
                 grid-template-columns: 1fr;
+                gap: 0.4rem;
             }
 
-            .workshop-cta {
-                flex-direction: column;
+            .skill-item {
+                font-size: 0.8rem;
+                gap: 0.4rem;
+            }
+
+            .status-badge {
+                font-size: 0.65rem;
+                padding: 0.3rem 0.7rem;
+            }
+
+            .stats {
+                padding: 2rem 1rem;
             }
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+                gap: 1.5rem;
+            }
+
+            .stat-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem 1rem;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+            }
+
+            .footer-text {
+                font-size: 0.9rem;
+                padding: 0 1rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: clamp(1.8rem, 10vw, 3rem);
+            }
+
+            .workshop-card {
+                padding: 1rem;
+                margin: 0;
+            }
+
+            .workshop-title {
+                font-size: 1.2rem;
+            }
+
+            .workshop-description {
+                font-size: 0.9rem;
+            }
+
+            .subjects-title, .skills-title {
+                font-size: 0.8rem;
+            }
+
+            .subject-tag {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.5rem;
+            }
+
+            .skill-item {
+                font-size: 0.75rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -903,258 +892,444 @@
             </div>
 
             <div class="workshops-grid">
-                <!-- Mars Rover Mission -->
+                <!-- Climate Hero Challenge -->
                 <div class="workshop-card">
                     <div class="workshop-header">
-                        <div class="workshop-icon">🚀</div>
-                        <div class="workshop-status">
-                            <div class="status-badge badge-hot">Most Popular</div>
-                        </div>
+                        <div class="workshop-icon">🏠</div>
+                        <div class="status-badge badge-hot">Most Popular</div>
                     </div>
-                    <h3 class="workshop-title">Mars Rover Engineering</h3>
-                    <p class="workshop-description">Design and build autonomous rovers using real NASA protocols. Learners program AI navigation, analyze Martian terrain data, and solve authentic space exploration challenges.</p>
+                    <h3 class="workshop-title">Eco-Home Architect Challenge</h3>
+                    <p class="workshop-description">Design and build climate-smart tiny houses that solve real-world challenges! Create flood-resistant homes, desert cooling systems, or mountain shelters using sustainable materials and innovative engineering.</p>
                     
-                    <div class="workshop-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">🤖</div>
-                            <span>AI Navigation</span>
+                    <div class="workshop-subjects">
+                        <div class="subjects-header">
+                            <span class="subjects-icon">📚</span>
+                            <span class="subjects-title">Subjects Covered</span>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">📡</div>
-                            <span>Remote Control</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🔬</div>
-                            <span>Data Analysis</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🌍</div>
-                            <span>NASA Data</span>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Architecture</span>
+                            <span class="subject-tag">Environmental Science</span>
+                            <span class="subject-tag">Geography</span>
+                            <span class="subject-tag">Sustainable Design</span>
+                            <span class="subject-tag">Physics</span>
                         </div>
                     </div>
 
-                    <div class="workshop-metrics">
-                        <div class="metric">
-                            <span class="metric-value">12-18</span>
-                            <span class="metric-label">Age Range</span>
+                    <div class="workshop-skills">
+                        <div class="skills-header">
+                            <span class="skills-icon">🎯</span>
+                            <span class="skills-title">Skills Developed</span>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">5</span>
-                            <span class="metric-label">Days</span>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <span class="skill-emoji">🏗️</span>
+                                <span>Climate Engineering</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">💧</span>
+                                <span>Water Harvesting</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">♻️</span>
+                                <span>Sustainable Materials</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🌡️</span>
+                                <span>Thermal Design</span>
+                            </div>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">24</span>
-                            <span class="metric-label">Max Students</span>
-                        </div>
-                    </div>
-
-                    <div class="workshop-cta">
-                        <button class="btn-workshop btn-primary">Learn More</button>
-                        <button class="btn-workshop btn-secondary">Book Demo</button>
                     </div>
                 </div>
 
-                <!-- Biotech Innovation Lab -->
+                <!-- The Young Scientist -->
                 <div class="workshop-card">
                     <div class="workshop-header">
-                        <div class="workshop-icon">🧬</div>
-                        <div class="workshop-status">
-                            <div class="status-badge badge-advanced">Advanced</div>
-                        </div>
+                        <div class="workshop-icon">⚗️</div>
+                        <div class="status-badge badge-new">Innovation Sprint</div>
                     </div>
-                    <h3 class="workshop-title">Biotech Innovation Lab</h3>
-                    <p class="workshop-description">Engineer living systems and explore genetic programming. Learners work with CRISPR technology, grow bio-materials, and develop solutions for environmental challenges.</p>
+                    <h3 class="workshop-title">The Young Scientist</h3>
+                    <p class="workshop-description">Step into a high-stakes innovation lab with curated Discovery Kits and race-against-the-clock challenges. Design, prototype, and showcase solutions for energy, water, and mobility.</p>
                     
-                    <div class="workshop-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">✂️</div>
-                            <span>CRISPR Basics</span>
+                    <div class="workshop-subjects">
+                        <div class="subjects-header">
+                            <span class="subjects-icon">📚</span>
+                            <span class="subjects-title">Subjects Covered</span>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🌱</div>
-                            <span>Bio-Materials</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🔬</div>
-                            <span>Lab Techniques</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🌍</div>
-                            <span>Environmental Focus</span>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Physics</span>
+                            <span class="subject-tag">Chemistry</span>
+                            <span class="subject-tag">Environmental Science</span>
+                            <span class="subject-tag">Mathematics</span>
+                            <span class="subject-tag">Entrepreneurship</span>
                         </div>
                     </div>
 
-                    <div class="workshop-metrics">
-                        <div class="metric">
-                            <span class="metric-value">16-20</span>
-                            <span class="metric-label">Age Range</span>
+                    <div class="workshop-skills">
+                        <div class="skills-header">
+                            <span class="skills-icon">🎯</span>
+                            <span class="skills-title">Skills Developed</span>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">10</span>
-                            <span class="metric-label">Days</span>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <span class="skill-emoji">🔧</span>
+                                <span>Design Thinking</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">⚙️</span>
+                                <span>Rapid Prototyping</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🌿</span>
+                                <span>Sustainable Solutions</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🎤</span>
+                                <span>Executive Pitching</span>
+                            </div>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">12</span>
-                            <span class="metric-label">Max Students</span>
-                        </div>
-                    </div>
-
-                    <div class="workshop-cta">
-                        <button class="btn-workshop btn-primary">Learn More</button>
-                        <button class="btn-workshop btn-secondary">Book Demo</button>
                     </div>
                 </div>
 
-                <!-- Quantum Computing Lab -->
+                <!-- Rescue Rangers Drone Quest -->
                 <div class="workshop-card">
                     <div class="workshop-header">
-                        <div class="workshop-icon">⚛️</div>
-                        <div class="workshop-status">
-                            <div class="status-badge badge-new">Cutting Edge</div>
-                        </div>
+                        <div class="workshop-icon">🚁</div>
+                        <div class="status-badge badge-new">Adventure Tech</div>
                     </div>
-                    <h3 class="workshop-title">Quantum Computing Lab</h3>
-                    <p class="workshop-description">Explore the fundamentals of quantum mechanics through hands-on programming. Learners build quantum algorithms, understand superposition, and program real quantum computers.</p>
+                    <h3 class="workshop-title">Rescue Rangers Drone Quest</h3>
+                    <p class="workshop-description">Become the pilot hero who saves villages! Build cardboard drones, launch rescue missions using AR flight simulators, and program AI-powered autonomous navigation to deliver life-saving supplies to flood-affected areas.</p>
                     
-                    <div class="workshop-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">💻</div>
-                            <span>Quantum Programming</span>
+                    <div class="workshop-subjects">
+                        <div class="subjects-header">
+                            <span class="subjects-icon">📚</span>
+                            <span class="subjects-title">Subjects Covered</span>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🔮</div>
-                            <span>Superposition</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🔗</div>
-                            <span>Entanglement</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🌐</div>
-                            <span>IBM Quantum Access</span>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Aerodynamics</span>
+                            <span class="subject-tag">AI Programming</span>
+                            <span class="subject-tag">Engineering Design</span>
+                            <span class="subject-tag">Digital Technology</span>
+                            <span class="subject-tag">Physics</span>
                         </div>
                     </div>
 
-                    <div class="workshop-metrics">
-                        <div class="metric">
-                            <span class="metric-value">15-20</span>
-                            <span class="metric-label">Age Range</span>
+                    <div class="workshop-skills">
+                        <div class="skills-header">
+                            <span class="skills-icon">🎯</span>
+                            <span class="skills-title">Skills Developed</span>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">6</span>
-                            <span class="metric-label">Days</span>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <span class="skill-emoji">🤖</span>
+                                <span>AI Navigation</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">📱</span>
+                                <span>AR Technology</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">✈️</span>
+                                <span>Flight Mechanics</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🦸</span>
+                                <span>Problem Solving</span>
+                            </div>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">20</span>
-                            <span class="metric-label">Max Students</span>
-                        </div>
-                    </div>
-
-                    <div class="workshop-cta">
-                        <button class="btn-workshop btn-primary">Learn More</button>
-                        <button class="btn-workshop btn-secondary">Book Demo</button>
                     </div>
                 </div>
 
-                <!-- Neural Interface Design -->
+                <!-- Water Detective Mission -->
                 <div class="workshop-card">
                     <div class="workshop-header">
-                        <div class="workshop-icon">🧠</div>
-                        <div class="workshop-status">
-                            <div class="status-badge badge-hot">Revolutionary</div>
-                        </div>
+                        <div class="workshop-icon">💧</div>
+                        <div class="status-badge badge-hot">Critical Mission</div>
                     </div>
-                    <h3 class="workshop-title">Neural Interface Design</h3>
-                    <p class="workshop-description">Build brain-computer interfaces and explore neurotechnology. Learners create EEG-controlled devices, understand neural signals, and design mind-controlled applications.</p>
+                    <h3 class="workshop-title">Water Guardian Mission</h3>
+                    <p class="workshop-description">Become Clean-Water Detective Agents! Crack the case of polluted water sources using DIY chemistry kits, present evidence to village councils, and design solutions to save communities.</p>
                     
-                    <div class="workshop-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">📡</div>
-                            <span>EEG Technology</span>
+                    <div class="workshop-subjects">
+                        <div class="subjects-header">
+                            <span class="subjects-icon">📚</span>
+                            <span class="subjects-title">Subjects Covered</span>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🎯</div>
-                            <span>Mind Control</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">📊</div>
-                            <span>Signal Processing</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🎮</div>
-                            <span>Interactive Apps</span>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Chemistry</span>
+                            <span class="subject-tag">Environmental Science</span>
+                            <span class="subject-tag">Public Health</span>
+                            <span class="subject-tag">Civic Studies</span>
+                            <span class="subject-tag">Data Analysis</span>
                         </div>
                     </div>
 
-                    <div class="workshop-metrics">
-                        <div class="metric">
-                            <span class="metric-value">16-22</span>
-                            <span class="metric-label">Age Range</span>
+                    <div class="workshop-skills">
+                        <div class="skills-header">
+                            <span class="skills-icon">🎯</span>
+                            <span class="skills-title">Skills Developed</span>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">8</span>
-                            <span class="metric-label">Days</span>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <span class="skill-emoji">🔬</span>
+                                <span>Scientific Testing</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🕵️</span>
+                                <span>Investigation Skills</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">📊</span>
+                                <span>Data Interpretation</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🎤</span>
+                                <span>Public Presentation</span>
+                            </div>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">14</span>
-                            <span class="metric-label">Max Students</span>
-                        </div>
-                    </div>
-
-                    <div class="workshop-cta">
-                        <button class="btn-workshop btn-primary">Learn More</button>
-                        <button class="btn-workshop btn-secondary">Book Demo</button>
                     </div>
                 </div>
 
-                <!-- Space Habitat Engineering -->
+                <!-- Smart Farm Challenge -->
                 <div class="workshop-card">
                     <div class="workshop-header">
-                        <div class="workshop-icon">🏗️</div>
-                        <div class="workshop-status">
-                            <div class="status-badge badge-advanced">Epic Scale</div>
-                        </div>
+                        <div class="workshop-icon">🌱</div>
+                        <div class="status-badge badge-advanced">Future Farming</div>
                     </div>
-                    <h3 class="workshop-title">Space Habitat Engineering</h3>
-                    <p class="workshop-description">Design sustainable habitats for Mars and beyond. Learners tackle life support systems, radiation shielding, food production, and psychological factors of space colonization.</p>
+                    <h3 class="workshop-title">Smart Agriculture Lab</h3>
+                    <p class="workshop-description">Run your own agri-tech startup! Compete for funding by growing 10-day micro-crops using hydroponic systems, AI-powered growth prediction models, and IoT sensors to beat drought conditions with data-driven farming.</p>
                     
-                    <div class="workshop-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">🌱</div>
-                            <span>Life Support</span>
+                    <div class="workshop-subjects">
+                        <div class="subjects-header">
+                            <span class="subjects-icon">📚</span>
+                            <span class="subjects-title">Subjects Covered</span>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🛡️</div>
-                            <span>Radiation Shield</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🥬</div>
-                            <span>Space Agriculture</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🏠</div>
-                            <span>Habitat Design</span>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Biology</span>
+                            <span class="subject-tag">AI & Machine Learning</span>
+                            <span class="subject-tag">Agriculture</span>
+                            <span class="subject-tag">Data Science</span>
+                            <span class="subject-tag">Entrepreneurship</span>
                         </div>
                     </div>
 
-                    <div class="workshop-metrics">
-                        <div class="metric">
-                            <span class="metric-value">14-20</span>
-                            <span class="metric-label">Age Range</span>
+                    <div class="workshop-skills">
+                        <div class="skills-header">
+                            <span class="skills-icon">🎯</span>
+                            <span class="skills-title">Skills Developed</span>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">12</span>
-                            <span class="metric-label">Days</span>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <span class="skill-emoji">🤖</span>
+                                <span>AI Predictions</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">📈</span>
+                                <span>Data Analytics</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🌿</span>
+                                <span>Hydroponics</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">💡</span>
+                                <span>IoT Sensors</span>
+                            </div>
                         </div>
-                        <div class="metric">
-                            <span class="metric-value">18</span>
-                            <span class="metric-label">Max Students</span>
+                    </div>
+                </div>
+
+                <!-- Traffic Hackers Challenge -->
+                <div class="workshop-card">
+                    <div class="workshop-header">
+                        <div class="workshop-icon">🚦</div>
+                        <div class="status-badge badge-advanced">Smart City</div>
+                    </div>
+                    <h3 class="workshop-title">Traffic Hackers Challenge</h3>
+                    <p class="workshop-description">Race against time to solve your city's traffic crisis! Program smart traffic systems using micro:bit controllers, train AI models to predict traffic patterns, and optimize carbon emissions in this gamified urban planning challenge.</p>
+                    
+                    <div class="workshop-subjects">
+                        <div class="subjects-header">
+                            <span class="subjects-icon">📚</span>
+                            <span class="subjects-title">Subjects Covered</span>
+                        </div>
+                        <div class="subjects-list">
+                            <span class="subject-tag">AI & Machine Learning</span>
+                            <span class="subject-tag">Computer Programming</span>
+                            <span class="subject-tag">Urban Planning</span>
+                            <span class="subject-tag">Systems Thinking</span>
+                            <span class="subject-tag">Environmental Science</span>
                         </div>
                     </div>
 
-                    <div class="workshop-cta">
-                        <button class="btn-workshop btn-primary">Learn More</button>
-                        <button class="btn-workshop btn-secondary">Book Demo</button>
+                    <div class="workshop-skills">
+                        <div class="skills-header">
+                            <span class="skills-icon">🎯</span>
+                            <span class="skills-title">Skills Developed</span>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <span class="skill-emoji">🤖</span>
+                                <span>AI Pattern Recognition</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">💻</span>
+                                <span>Coding Logic</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🔧</span>
+                                <span>Automation</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🌍</span>
+                                <span>Climate Action</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Byte-Size Startup Challenge -->
+                <div class="workshop-card">
+                    <div class="workshop-header">
+                        <div class="workshop-icon">💰</div>
+                        <div class="status-badge badge-hot">TeenPreneur</div>
+                    </div>
+                    <h3 class="workshop-title">Byte-Size Startup Sprint</h3>
+                    <p class="workshop-description">Transform ₹100 into ₹1 Lakh! Run your own startup pitch competition with live crowdfunding, prototype development, and investor presentations. Every unused rupee becomes bonus equity!</p>
+                    
+                    <div class="workshop-subjects">
+                        <div class="subjects-header">
+                            <span class="subjects-icon">📚</span>
+                            <span class="subjects-title">Subjects Covered</span>
+                        </div>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Entrepreneurship</span>
+                            <span class="subject-tag">Financial Literacy</span>
+                            <span class="subject-tag">Business Strategy</span>
+                            <span class="subject-tag">Design Thinking</span>
+                            <span class="subject-tag">Communication</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-skills">
+                        <div class="skills-header">
+                            <span class="skills-icon">🎯</span>
+                            <span class="skills-title">Skills Developed</span>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <span class="skill-emoji">💡</span>
+                                <span>Business Planning</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🎤</span>
+                                <span>Pitch Presentation</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">💰</span>
+                                <span>Financial Management</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🚀</span>
+                                <span>Innovation Thinking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fashion Empire Builder -->
+                <div class="workshop-card">
+                    <div class="workshop-header">
+                        <div class="workshop-icon">👗</div>
+                        <div class="status-badge badge-new">Creative Business</div>
+                    </div>
+                    <h3 class="workshop-title">Fashion Empire Builder</h3>
+                    <p class="workshop-description">Launch your own fashion brand from scratch! Design sustainable clothing lines, use AI-powered trend analysis tools, create digital prototypes, and pitch to investors in this creative entrepreneurship challenge.</p>
+                    
+                    <div class="workshop-subjects">
+                        <div class="subjects-header">
+                            <span class="subjects-icon">📚</span>
+                            <span class="subjects-title">Subjects Covered</span>
+                        </div>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Design</span>
+                            <span class="subject-tag">AI & Data Analysis</span>
+                            <span class="subject-tag">Business Studies</span>
+                            <span class="subject-tag">Sustainability</span>
+                            <span class="subject-tag">Digital Arts</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-skills">
+                        <div class="skills-header">
+                            <span class="skills-icon">🎯</span>
+                            <span class="skills-title">Skills Developed</span>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <span class="skill-emoji">🤖</span>
+                                <span>AI Trend Analysis</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">✏️</span>
+                                <span>Fashion Design</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">💰</span>
+                                <span>Brand Building</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">📱</span>
+                                <span>Digital Prototyping</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Ninjas Arena -->
+                <div class="workshop-card">
+                    <div class="workshop-header">
+                        <div class="workshop-icon">📰</div>
+                        <div class="status-badge badge-advanced">Critical Thinking</div>
+                    </div>
+                    <h3 class="workshop-title">News Ninjas Fact-Check Arena</h3>
+                    <p class="workshop-description">TikTok-style battle arena! Race to spot fake news before it spreads, master Google Fact-Check tools, and become the ultimate truth-seeking ninja in this high-energy media literacy duel.</p>
+                    
+                    <div class="workshop-subjects">
+                        <div class="subjects-header">
+                            <span class="subjects-icon">📚</span>
+                            <span class="subjects-title">Subjects Covered</span>
+                        </div>
+                        <div class="subjects-list">
+                            <span class="subject-tag">Media Literacy</span>
+                            <span class="subject-tag">Critical Thinking</span>
+                            <span class="subject-tag">Digital Ethics</span>
+                            <span class="subject-tag">Research Methods</span>
+                            <span class="subject-tag">Communication</span>
+                        </div>
+                    </div>
+
+                    <div class="workshop-skills">
+                        <div class="skills-header">
+                            <span class="skills-icon">🎯</span>
+                            <span class="skills-title">Skills Developed</span>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <span class="skill-emoji">🕵️</span>
+                                <span>Fact Verification</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🧠</span>
+                                <span>Critical Analysis</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">⚡</span>
+                                <span>Quick Thinking</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-emoji">🛡️</span>
+                                <span>Digital Safety</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1205,283 +1380,7 @@
         </div>
     </footer>
 
-    <!-- Contact Modal -->
-    <div class="modal" id="contactModal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeContactModal()">&times;</button>
-            <div id="modalForm">
-                <div class="modal-header">
-                    <h3 class="modal-title">Get Started with TEZZ X LABS</h3>
-                    <p class="modal-subtitle">Let's discuss how we can transform your learners into tomorrow's innovators</p>
-                </div>
-                
-                <form onsubmit="handleFormSubmit(event)" id="contactForm">
-                    <div class="form-group">
-                        <label class="form-label">Full Name *</label>
-                        <input type="text" class="form-input" name="name" required placeholder="Enter your full name">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Email Address *</label>
-                        <input type="email" class="form-input" name="email" required placeholder="your.email@example.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Phone Number *</label>
-                        <input type="tel" class="form-input" name="phone" required placeholder="+91 98765 43210">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">Organization/School</label>
-                        <input type="text" class="form-input" name="organization" placeholder="Your organization name">
-                    </div>
-                    
-                    <button type="submit" class="form-submit" id="submitBtn">
-                        <span>Send Request</span>
-                    </button>
-                </form>
-            </div>
-
-            <div id="successMessage" class="success-message" style="display: none;">
-                <div class="success-icon">🚀</div>
-                <h3 class="success-title">Request Sent Successfully!</h3>
-                <p class="success-text">Thank you for your interest in TEZZ X LABS. We've received your request and will get back to you within 24 hours with detailed information about our workshops and partnership opportunities.</p>
-                <br>
-                <button class="form-submit" onclick="closeContactModal()">Close</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Contact Modal Functions
-        function openContactModal() {
-            document.getElementById('contactModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            // Reset modal to form view
-            document.getElementById('modalForm').style.display = 'block';
-            document.getElementById('successMessage').style.display = 'none';
-            document.getElementById('contactForm').reset();
-        }
-
-        function closeContactModal() {
-            document.getElementById('contactModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Google Forms Integration - CONFIGURED FOR YOUR FORM
-        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/formResponse';
-        
-        // YOUR ACTUAL GOOGLE FORM FIELD IDs
-        const FORM_FIELDS = {
-            name: 'entry.1123369645',      // Full Name field
-            email: 'entry.138826326',      // Email Address field  
-            phone: 'entry.142036428',      // Phone Number field
-            organization: 'entry.82140079' // Organization field
-        };
-
-        // ENTRY ID DETECTIVE - FIND THE REAL ENTRY IDs
-        
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const btnText = submitBtn.querySelector('span');
-            
-            btnText.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            // Get form values
-            const name = document.querySelector('input[name="name"]').value.trim();
-            const email = document.querySelector('input[name="email"]').value.trim();
-            const phone = document.querySelector('input[name="phone"]').value.trim();
-            const organization = document.querySelector('input[name="organization"]').value.trim() || 'Not specified';
-
-            console.log('=== CURRENT ENTRY IDs (MIGHT BE WRONG) ===');
-            console.log('Name: entry.1123369645');
-            console.log('Email: entry.138826326'); 
-            console.log('Phone: entry.142036428');
-            console.log('Organization: entry.82140079');
-            console.log('');
-            console.log('=== TO FIND CORRECT ENTRY IDs ===');
-            console.log('1. Go to: https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/viewform');
-            console.log('2. Right-click on the NAME field → Inspect Element');
-            console.log('3. Look for: name="entry.XXXXXXXX"');
-            console.log('4. Repeat for Email, Phone, Organization fields');
-            console.log('5. Call updateEntryIds() with correct IDs');
-
-            // Try current IDs (probably wrong)
-            submitToGoogleForms(name, email, phone, organization);
-
-            setTimeout(() => {
-                document.getElementById('modalForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-                
-                btnText.textContent = 'Send Request';
-                submitBtn.disabled = false;
-            }, 1500);
-
-            return false;
-        }
-
-        function submitToGoogleForms(name, email, phone, organization) {
-            const form = document.createElement('form');
-            form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/formResponse';
-            form.method = 'POST';
-            form.target = '_blank';
-            
-            const fields = [
-                {name: 'entry.1123369645', value: name},    // Name field
-                {name: 'entry.138826326', value: email},     // Email field
-                {name: 'entry.142036428', value: phone},     // Phone field
-                {name: 'entry.82140079', value: organization} // Organization field
-            ];
-
-            fields.forEach(field => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = field.name;
-                input.value = field.value;
-                form.appendChild(input);
-            });
-
-            document.body.appendChild(form);
-            form.submit();
-            
-            setTimeout(() => {
-                try {
-                    document.body.removeChild(form);
-                } catch(e) {}
-            }, 1000);
-        }
-
-        // Function to update entry IDs when you find the correct ones
-        function updateEntryIds(nameId, emailId, phoneId, orgId) {
-            console.log('=== UPDATING ENTRY IDs ===');
-            console.log('Name ID:', nameId);
-            console.log('Email ID:', emailId);
-            console.log('Phone ID:', phoneId);
-            console.log('Organization ID:', orgId);
-            
-            // Store the correct IDs
-            window.correctEntryIds = {
-                name: nameId,
-                email: emailId,
-                phone: phoneId,
-                organization: orgId
-            };
-            
-            console.log('Entry IDs updated! Try submitting the form again.');
-        }
-
-        // Modified submit function that uses correct IDs if available
-        function submitWithCorrectIds(name, email, phone, organization) {
-            const ids = window.correctEntryIds || {
-                name: 'entry.1123369645',
-                email: 'entry.138826326', 
-                phone: 'entry.142036428',
-                organization: 'entry.82140079'
-            };
-
-            const form = document.createElement('form');
-            form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/formResponse';
-            form.method = 'POST';
-            form.target = '_blank';
-            
-            const fields = [
-                {name: ids.name, value: name},
-                {name: ids.email, value: email},
-                {name: ids.phone, value: phone},
-                {name: ids.organization, value: organization}
-            ];
-
-            console.log('=== SUBMITTING WITH IDs ===');
-            fields.forEach(field => {
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = field.name;
-                input.value = field.value;
-                form.appendChild(input);
-                console.log(`${field.name} = ${field.value}`);
-            });
-
-            document.body.appendChild(form);
-            form.submit();
-            
-            setTimeout(() => {
-                try {
-                    document.body.removeChild(form);
-                } catch(e) {}
-            }, 1000);
-        }
-
-        // EASY WAY: Open your form and run this in console
-        function findEntryIds() {
-            console.log('=== STEP-BY-STEP GUIDE TO FIND ENTRY IDs ===');
-            console.log('');
-            console.log('1. Open this link in new tab:');
-            console.log('   https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/viewform');
-            console.log('');
-            console.log('2. Right-click on the NAME input field');
-            console.log('3. Click "Inspect Element"');
-            console.log('4. Look for something like: name="entry.1234567890"');
-            console.log('5. Copy that number');
-            console.log('');
-            console.log('6. Repeat for Email, Phone, Organization fields');
-            console.log('');
-            console.log('7. When you have all 4 numbers, call:');
-            console.log('   updateEntryIds("entry.NAME_ID", "entry.EMAIL_ID", "entry.PHONE_ID", "entry.ORG_ID")');
-            console.log('');
-            console.log('Example:');
-            console.log('updateEntryIds("entry.1234567890", "entry.0987654321", "entry.5555555555", "entry.9999999999")');
-            
-            // Also open the form for them
-            window.open('https://docs.google.com/forms/d/e/1FAIpQLSfMS7XIOfA_KMdYMygPfSczW3TPEEKzp3kHuO2vqI71-qIjLg/viewform', '_blank');
-        }
-
-        // Quick test function
-        function quickTest() {
-            const testData = {
-                name: 'Test Name',
-                email: 'test@email.com',
-                phone: '1234567890', 
-                organization: 'Test Org'
-            };
-            
-            console.log('=== QUICK TEST WITH CURRENT IDs ===');
-            submitToGoogleForms(testData.name, testData.email, testData.phone, testData.organization);
-            console.log('Check the new tab - if it says "Your response has been recorded", the IDs are correct');
-            console.log('If you see an error, the entry IDs are wrong');
-        }
-
-        // Add click handler as backup
-        document.addEventListener('DOMContentLoaded', function() {
-            const submitBtn = document.getElementById('submitBtn');
-            if (submitBtn) {
-                submitBtn.addEventListener('click', function(e) {
-                    console.log('Button clicked directly!');
-                    const form = document.getElementById('contactForm');
-                    if (form) {
-                        handleFormSubmit(e);
-                    }
-                });
-            }
-        });
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('contactModal');
-            if (event.target === modal) {
-                closeContactModal();
-            }
-        }
-
-        // Close modal on escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeContactModal();
-            }
-        });
-
         // Smooth scrolling for navigation links - INSTANT
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1512,16 +1411,15 @@
         // Interactive workshop cards - INSTANT
         document.querySelectorAll('.workshop-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px) scale(1.01)';
-                card.style.transition = 'transform 0.1s ease';
+                card.style.transform = 'translateY(-8px) scale(1.01)';
+                card.style.transition = 'transform 0.2s ease';
             });
             
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(0) scale(1)';
-                card.style.transition = 'transform 0.1s ease';
+                card.style.transition = 'transform 0.2s ease';
             });
         });
     </script>
 </body>
 </html>
-                
